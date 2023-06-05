@@ -1,25 +1,33 @@
 import { Router } from "express";
-import ProductManager from "../managers/productManager.js";
+import { ProductModel } from "../DAO/models/products.model.js";
+
 
 export const viewRouter = Router()
-const myManager = new ProductManager('./src/data/products.json');
 
 viewRouter.get("/", async (req, res) => {
     try {
-        const products = await myManager.getProducts();
-        return res.status(200).render("index", {products});
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: 'error' })
+        const products = await ProductModel.find({}).lean();
+        return res.status(200).render("index", { products });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({
+            status: "error",
+            msg: "something went wrong :(",
+            data: {},
+        });
     }
 });
 
 viewRouter.get("/realtimeproducts", async (req, res) => {
     try {
-        const products = await myManager.getProducts();
-        return res.status(200).render("realtimeproducts", {products});
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: 'error' })
+        const products = await ProductModel.find({}).lean();
+        return res.status(200).render("realtimeproducts", { products });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({
+            status: "error",
+            msg: "something went wrong :(",
+            data: {},
+        });
     }
 });

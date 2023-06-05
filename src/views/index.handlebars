@@ -1,57 +1,84 @@
 <div style="text-align: center;">
   {{#each products}}
-  <div style="display: inline-block; margin: 10px; border: 5px solid black;">
+  <div id={{this._id}} style="display: inline-block; margin: 10px; border: 5px solid black;">
     <img src="{{this.thumbnails}}" alt="product image" width="200" height="200">
     <h2>{{this.title}}</h2>
     <p>{{this.description}}</p>
     <p>Precio: {{this.price}}</p>
     <p>Stock: {{this.stock}}</p>
 
-      <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+    <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
   </div>
   {{/each}}
 </div>
 
-<script>
-function deleteProduct(productId) {
-  fetch(`/api/products/${productId}`, {
-    method: 'DELETE',
-  })
-  .then(response => {
-    if (response.ok) {
-      // Hacer algo si la solicitud fue exitosa
-      alert("producto eliminado");
-      window.location.reload();
-    } else {
-      // Hacer algo si la solicitud no fue exitosa
-    alert('Error al eliminar el producto');
-    }
-  })
-  .catch(error => {
-    // Hacer algo si ocurrió un error al enviar la solicitud
-    alert('Error de solicitud');
-  });
-}
-</script>
 
-<form class= "formSocket"  id="" method="POST" action="/api/products" enctype="multipart/form-data">
-    <label for="title">Título:</label>
-    <input type="text" id="title" name="title"><br>
+<form class="formSocket" id="productForm" method="" action="" enctype="multipart/form-data">
+  <label for="title">Título:</label>
+  <input type="text" id="title" name="title"><br>
 
-    <label for="description">Descripción:</label>
-    <textarea id="description" name="description"></textarea><br>
+  <label for="description">Descripción:</label>
+  <textarea id="description" name="description"></textarea><br>
 
-    <label for="code">Código:</label> 
-    <input type="text" id="code" name="code"><br>
+  <label for="code">Código:</label>
+  <input type="text" id="code" name="code"><br>
 
-    <label for="thumbnails">Imagen:</label>
-    <input type="file" id="thumbnails" name="thumbnails" required><br>
+  <label for="thumbnails">Imagen:</label>
+  <input type="file" id="thumbnails" name="thumbnails" required><br>
 
-    <label for="price">Precio:</label>
-    <input type="number" id="price" name="price"><br>
+  <label for="price">Precio:</label>
+  <input type="number" id="price" name="price"><br>
 
-    <label for="stock">Stock:</label>
-    <input type="number" id="stock" name="stock"><br>
+  <label for="stock">Stock:</label>
+  <input type="number" id="stock" name="stock"><br>
 
-    <input type="submit" value="Agregar producto">
+  <input type="submit" value="Agregar producto">
 </form>
+
+
+<script>
+  const addProductForm = document.getElementById('productForm');
+  try {
+    addProductForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(addProductForm);
+      const response = await fetch('/api/products', { method: 'post', body: formData, });
+      const bodyResponse = await response.json();
+      if (response.ok) {
+        const product = bodyResponse.data;
+        console.log(product);
+        //addProductToHtml(product);
+      } else {
+        const error = bodyResponse.error;
+        alert(error);
+      }
+    });
+
+  } catch (error) {
+    alert("error");
+  }
+
+
+  function deleteProduct(productId) {
+    fetch(`/api/products/${productId}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          // Hacer algo si la solicitud fue exitosa
+          alert("producto eliminado");
+          const element = document.getElementById(productId);
+          if (element) {
+            element.remove();
+          }
+        } else {
+          // Hacer algo si la solicitud no fue exitosa
+          alert('Error al eliminar el producto');
+        }
+      })
+      .catch(error => {
+        // Hacer algo si ocurrió un error al enviar la solicitud
+        alert('Error de solicitud');
+      });
+  }
+</script>
