@@ -39,6 +39,7 @@ export async function connectMongo() {
 import { Server } from 'socket.io';
 import { MsgModel } from './DAO/models/msg.model.js';
 import { ProductService } from "../src/services/product.service.js";
+import { ProductModel } from "./DAO/models/products.model.js";
 
 
 const ProductSrvc = new ProductService();

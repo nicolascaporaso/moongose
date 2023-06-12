@@ -1,11 +1,35 @@
 import { error } from "console";
 import { ProductModel } from "../DAO/models/products.model.js";
+import { query } from "express";
+import { type } from "os";
 
 export class ProductService {
-    
-    async getAll() {
-        const products = await ProductModel.find({});
-        return products;
+
+    async getAll(params) {
+        let page = params.page
+        let limit = params.limit
+        page = parseInt(page);
+        let order = parseInt(params.sort);
+        let validatedSort = 1;
+        const prenda = params.prenda;
+        const query = {}
+
+        if (order == 1 || order == -1) {
+            validatedSort = order;
+        }
+        
+        if (prenda){
+            query.title = prenda;
+        }
+        
+        try {
+            const queryRes = await ProductModel.paginate(query, { limit: limit || 10, page: page || 1, sort: { title: validatedSort } });
+
+            return queryRes;
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async getOne(id) {

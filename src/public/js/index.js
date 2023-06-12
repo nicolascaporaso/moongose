@@ -6,7 +6,6 @@ socket.on("deleted", (deleted) => {
 })
 
 socket.on("createProductOk", (data) => {
-    console.log(data);
     const cardContainer = document.getElementById('card-container');
     var newCard = document.createElement('div');
     newCard.id = data.id;

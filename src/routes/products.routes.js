@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { uploader } from "../utils.js";
-import { ProductModel } from "../DAO/models/products.model.js";
 import { ProductService } from "../services/product.service.js";
 
 export const pdctRouter = Router()
@@ -9,11 +8,11 @@ const ProductSrvc = new ProductService();
 
 pdctRouter.get("/", async (req, res) => {
     try {
-        const productos = await ProductSrvc.getAll();
+        const productos = await ProductSrvc.getAll(req.query);
         return res.status(200).json({
             status: "success",
-            msg: "listado de usuarios", 
-            data: productos,
+            msg: "listado de productos", 
+            payload: productos.docs
         });
     } catch (e) {
         console.log(e);
