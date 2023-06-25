@@ -61,4 +61,9 @@ authRouter.post('/register', async (req, res) => {
         console.log(e);
         return res.status(400).render('error', { error: 'no se pudo crear el usuario. Intente con otro mail.' });
     }
+
+
+authRouter.get('/github/callback', (req, res) => {
+
+
 });

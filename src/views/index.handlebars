@@ -100,7 +100,7 @@
 
   document.addEventListener("DOMContentLoaded", function (event) {
     // Verificar si existe un ID de carrito en el Local Storage
-    const cartId = localStorage.getItem('cartId');
+    const cartId = sessionStorage.getItem('cartId');
 
     if (!cartId) {
       // No se encontró un ID de carrito, crear uno nuevo
@@ -118,7 +118,8 @@
         const data = await response.json();
         const cartId = data.id;
         alert(cartId)
-        localStorage.setItem('cartId', cartId);
+        sessionStorage.setItem('cartId', cartId);
+        //localStorage.setItem('cartId', cartId);
       } else {
         console.error('Error en la solicitud:', response.status);
         // Manejar el error adecuadamente
