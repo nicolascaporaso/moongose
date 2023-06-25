@@ -1,132 +1,57 @@
-<button id="btnToggle">Cargar producto nuevo</button>
-
 <div style="text-align: center;">
-  {{#each payload}}
-  <div id={{this._id}} style="display: inline-block; margin: 10px; border: 5px solid black;">
+  {{#each products}}
+  <div style="display: inline-block; margin: 10px; border: 5px solid black;">
     <img src="{{this.thumbnails}}" alt="product image" width="200" height="200">
     <h2>{{this.title}}</h2>
     <p>{{this.description}}</p>
     <p>Precio: {{this.price}}</p>
     <p>Stock: {{this.stock}}</p>
 
-    <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
-    <button onclick="addToCart('{{this._id}}')">AddtoCart</button>
+      <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
   </div>
-
   {{/each}}
 </div>
 
-<div class="pagination">
-  <div><label for=""></label>Products for Pages {{pagination.limit}}</div>
-  <div><label for=""></label>Total Products {{pagination.totalDocs}}</div>
-  <div><label for=""></label>Total Pages {{pagination.totalPages}}</div>
-  <div><label for=""></label>Actual Page {{pagination.page}}</div>
-
-  {{#if pagination.hasPrevPage}}
-  <a href="/products?page={{pagination.prevPage}}">
-    <div><label for=""></label>PreviousPage {{pagination.prevPage}}</div>
-  </a>
-  {{/if}}
-
-  {{#if pagination.hasNextPage}}
-  <a href="/products?page={{pagination.nextPage}}">
-    <div><label for=""></label>NextPage {{pagination.nextPage}}</div>
-  </a>
-  {{/if}}
-</div>
-
-<div id="addNewProduct" class="hidden">
-  {{> form}}
-</div>
-
 <script>
-
-  const btnToggle = document.getElementById('btnToggle');
-  const contentContainer = document.getElementById('addNewProduct');
-
-  // Agrega el evento clic al botón
-  btnToggle.addEventListener('click', () => {
-    // Cambia la visibilidad del contenido al hacer clic en el botón
-    contentContainer.classList.toggle('hidden');
-  });
-
-  function deleteProduct(productId) {
-    fetch(`/api/products/${productId}`, {
-      method: 'DELETE',
-    })
-      .then(response => {
-        if (response.ok) {
-          // Hacer algo si la solicitud fue exitosa
-          alert("producto eliminado");
-          const element = document.getElementById(productId);
-          if (element) {
-            element.remove();
-          }
-        } else {
-          // Hacer algo si la solicitud no fue exitosa
-          alert('Error al eliminar el producto');
-        }
-      })
-      .catch(error => {
-        // Hacer algo si ocurrió un error al enviar la solicitud
-        alert('Error de solicitud');
-      });
-  }
-
- function addToCart(pid) {
-  alert("agregando a cart");
-  const cid = localStorage.getItem('cartId');
-
-  fetch(`/api/carts/${cid}/product/${pid}`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      quantity: 1
-    }),
-    headers: {
-      'Content-Type': 'application/json'
+function deleteProduct(productId) {
+  fetch(`/api/products/${productId}`, {
+    method: 'DELETE',
+  })
+  .then(response => {
+    if (response.ok) {
+      // Hacer algo si la solicitud fue exitosa
+      alert("producto eliminado");
+      window.location.reload();
+    } else {
+      // Hacer algo si la solicitud no fue exitosa
+    alert('Error al eliminar el producto');
     }
   })
-    .then(response => {
-      if (response.ok) {
-        alert(response);
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      // Manejar el error adecuadamente
-    });
-}
-
-
-  document.addEventListener("DOMContentLoaded", function (event) {
-    // Verificar si existe un ID de carrito en el Local Storage
-    const cartId = sessionStorage.getItem('cartId');
-
-    if (!cartId) {
-      // No se encontró un ID de carrito, crear uno nuevo
-      alert("no existe carro");
-      createCart();
-    } else {
-      // Se encontró un ID de carrito.
-    }
+  .catch(error => {
+    // Hacer algo si ocurrió un error al enviar la solicitud
+    alert('Error de solicitud');
   });
-
-  async function createCart() {
-    try {
-      const response = await fetch('/api/carts', { method: 'post' });
-      if (response.ok) {
-        const data = await response.json();
-        const cartId = data.id;
-        alert(cartId)
-        sessionStorage.setItem('cartId', cartId);
-        //localStorage.setItem('cartId', cartId);
-      } else {
-        console.error('Error en la solicitud:', response.status);
-        // Manejar el error adecuadamente
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      // Manejar el error adecuadamente
-    }
-  }
+}
 </script>
+
+<form class= "formSocket"  id="" method="POST" action="/api/products" enctype="multipart/form-data">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title"><br>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description"></textarea><br>
+
+    <label for="code">Código:</label> 
+    <input type="text" id="code" name="code"><br>
+
+    <label for="thumbnails">Imagen:</label>
+    <input type="file" id="thumbnails" name="thumbnails" required><br>
+
+    <label for="price">Precio:</label>
+    <input type="number" id="price" name="price"><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock"><br>
+
+    <input type="submit" value="Agregar producto">
+</form>

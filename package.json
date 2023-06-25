@@ -1,19 +1,13 @@
 {
   "type": "module",
   "dependencies": {
-    "connect-mongo": "^5.0.0",
-    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
     "fetch": "^1.1.0",
-    "mongoose": "^7.2.1",
-    "mongoose-paginate": "^5.0.3",
-    "mongoose-paginate-v2": "^1.7.1",
     "multer": "^1.4.5-lts.1",
     "node": "^20.1.0",
     "node-fetch": "^3.3.1",
-    "nodemon": "^1.14.9",
-    "passport-github2": "^0.1.12",
+    "nodemon": "^2.0.22",
     "socket.io": "^4.6.1"
   },
   "name": "entregable-2-archivos",

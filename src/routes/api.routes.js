@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {pdctRouter} from "./products.routes.js";
-import {cartRouter} from "./cart.routes.js";
+import {cartRouter} from "./carts.routes.js";
 
 export const apiRouter = Router()
 

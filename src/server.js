@@ -1,43 +1,66 @@
-//@ts-check
-import MongoStore from 'connect-mongo';
 import express from 'express'
-import session from 'express-session';
-import { apiRouter } from "./routes/api.routes.js";
-import { __dirname, connectMongo, connectSocket } from './utils.js';
+import {apiRouter} from "./routes/api.routes.js";
+import { __dirname } from './utils.js';
 import path from "path";
 import handlebars from 'express-handlebars';
-import { viewRouter } from "./routes/view.Routes.js";
-import { ChatRouter } from './routes/chat.router.js';
-import { authRouter } from './routes/auth.router.js';
+import {viewRouter} from "./routes/view.Routes.js";
+import { Server } from "socket.io";
+import ProductManager from './managers/productManager.js';
+
+
+const myManager = new ProductManager('./src/data/products.json');
 
 const app = express();
-const port = 8081;
+const port = 8080;
 
 const httpServer = app.listen(port, () => {
-    console.log("example app listen port " + "http://localhost:" + port + "/api/products");
+    console.log("example app listen port " + "http://localhost:"+port+"/api/products");
 });
 
-connectSocket(httpServer);
-connectMongo();
+const socketServer = new Server (httpServer);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-    session({
-        store: MongoStore.create({ mongoUrl: "mongodb+srv://nicolascaporaso:control4970@comerce.nbjkdia.mongodb.net/ecomerce?retryWrites=true&w=majority", ttl: 7200 }),
-        secret: 'un-re-secreto',
-        resave: true,
-        saveUninitialized: true,
-    })
-);
-
-app.engine('handlebars', handlebars.engine());
-app.set('view engine', 'handlebars');
+app.engine ('handlebars', handlebars.engine());
+app.set('view engine','handlebars');
 app.set('views', __dirname + '/views');
+
+//midleware para usar io en post
+/*app.use((req, res, next) => {
+    req.io = socketServer;
+    next();
+});*/
 
 app.use("/", viewRouter);
 app.use("/api", apiRouter);
-app.use("/chat", ChatRouter);
-app.use('/auth', authRouter);
+
+socketServer.on("connection",(socket) => {
+    console.log("cliente conectado " + socket.id);
+    
+    socket.on('createProduct', async (pdata) =>{
+        try {
+            const product = await myManager.addProduct(pdata);
+            socket.emit("createProductOk", pdata); 
+
+        } catch (error) {
+            console.log(error.message);
+            socket.emit("createProductFail",error.message); 
+        }
+    });
+
+    socket.on('deleteProduct', async (id) =>{
+        try {
+            const product = await myManager.deleteProduct(id);
+            socket.emit("createProductOk", pdata); 
+
+        } catch (error) {
+            console.log(error.message);
+            socket.emit("createProductFail",error.message); 
+        }
+    });
+
+    
+
+});
