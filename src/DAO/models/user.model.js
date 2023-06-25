@@ -1,6 +1,5 @@
 //@ts-check
 import { Schema, model } from 'mongoose';
-import monsoosePaginate from 'mongoose-paginate-v2';
 
 const schema = new Schema({
     firstName: {
@@ -20,7 +19,7 @@ const schema = new Schema({
         unique: true,
     },
 
-    pass: {
+    password: {
         type: String,
         required: true,
         max: 100,
@@ -29,7 +28,8 @@ const schema = new Schema({
     isAdmin: {
         type: Boolean,
         required: true,
+        default: false,
     },
 });
-schema.plugin(monsoosePaginate);
+
 export const UserModel = model('users', schema);

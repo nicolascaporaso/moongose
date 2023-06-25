@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ProductModel } from "../DAO/models/products.model.js";
 import { ProductService } from "../services/product.service.js";
+import { isAdmin, isUser } from '../middlewares/auth.js';
 
 export const viewRouter = Router()
 const ProductSrvc = new ProductService();
@@ -33,7 +34,7 @@ viewRouter.get("/realtimeproducts", async (req, res) => {
     }
 });
 
-viewRouter.get("/products", async (req, res) => {
+viewRouter.get("/products", isUser ,async (req, res) => {
     try {
         const products = await ProductSrvc.getAll(req.query);
         const { docs, ...rest } = products;

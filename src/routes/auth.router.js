@@ -1,8 +1,47 @@
 import express from 'express';
-import { UserModel } from '../DAO/models/user.model.js';
+import passport from 'passport';
 import { isAdmin, isUser } from '../middlewares/auth.js';
 
 export const authRouter = express.Router();
+
+authRouter.get('/session', (req, res) => {
+    return res.send(JSON.stringify(req.session));
+});
+
+authRouter.get('/register', (req, res) => {
+    return res.render('register', {});
+});
+
+authRouter.post('/register', passport.authenticate('register', { failureRedirect: '/auth/failregister' }), (req, res) => {
+    if (!req.user) {
+        return res.json({ error: 'something went wrong' });
+    }
+    req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, isAdmin: req.user.isAdmin };
+
+    return res.json({ msg: 'ok', payload: req.user });
+});
+
+authRouter.get('/failregister', async (req, res) => {
+    console.log(error);
+    return res.json({ error: 'fail to register' });
+});
+
+authRouter.get('/login', (req, res) => {
+    return res.render('login', {});
+});
+
+authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }), async (req, res) => {
+    if (!req.user) {
+        return res.json({ error: 'invalid credentials' });
+    }
+    req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, isAdmin: req.user.isAdmin };
+
+    return res.json({ msg: 'ok', payload: req.user });
+});
+
+authRouter.get('/faillogin', async (req, res) => {
+    return res.json({ error: 'fail to login' });
+});
 
 authRouter.get('/logout', (req, res) => {
     req.session.destroy((err) => {
@@ -14,51 +53,10 @@ authRouter.get('/logout', (req, res) => {
 });
 
 authRouter.get('/perfil', isUser, (req, res) => {
-    const user = { email: req.session.email, isAdmin: req.session.isAdmin };
+    const user = req.session.user;
     return res.render('perfil', { user: user });
 });
 
-authRouter.get('/administracion', isUser, isAdmin, (req, res) => {
+authRouter.get('/administracion', isUser , (req, res) => {
     return res.send('datos super secretos clasificados sobre los nuevos ingresos a boca juniors');
-});
-
-authRouter.get('/login', (req, res) => {
-    return res.render('login', {});
-});
-
-authRouter.post('/login', async (req, res) => {
-    const { email, pass } = req.body;
-    if (!email || !pass) {
-        return res.status(400).render('error', { error: 'ponga su email y pass' });
-    }
-    const usarioEncontrado = await UserModel.findOne({ email: email });
-    if (usarioEncontrado && usarioEncontrado.pass == pass) {
-        req.session.email = usarioEncontrado.email;
-        req.session.isAdmin = usarioEncontrado.isAdmin;
-
-        return res.redirect('/auth/perfil');
-    } else {
-        return res.status(401).render('error', { error: 'email o pass estan mal' });
-    }
-});
-
-authRouter.get('/register', (req, res) => {
-    return res.render('register', {});
-});
-
-authRouter.post('/register', async (req, res) => {
-    const { email, pass, firstName, lastName } = req.body;
-    if (!email || !pass || !firstName || !lastName) {
-        return res.status(400).render('error', { error: 'ponga bien toooodoo cheee!!' });
-    }
-    try {
-        await UserModel.create({ email: email, pass: pass, firstName: firstName, lastName: lastName, isAdmin: false });
-        req.session.email = email;
-        req.session.isAdmin = false;
-
-        return res.redirect('/auth/perfil');
-    } catch (e) {
-        console.log(e);
-        return res.status(400).render('error', { error: 'no se pudo crear el usuario. Intente con otro mail.' });
-    }
 });

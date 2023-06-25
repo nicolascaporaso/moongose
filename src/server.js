@@ -9,6 +9,9 @@ import handlebars from 'express-handlebars';
 import { viewRouter } from "./routes/view.Routes.js";
 import { ChatRouter } from './routes/chat.router.js';
 import { authRouter } from './routes/auth.router.js';
+import { iniPassport } from './config/passport.config.js';
+import passport from 'passport';
+
 
 const app = express();
 const port = 8081;
@@ -24,14 +27,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+
 app.use(
     session({
-        store: MongoStore.create({ mongoUrl: "mongodb+srv://nicolascaporaso:control4970@comerce.nbjkdia.mongodb.net/ecomerce?retryWrites=true&w=majority", ttl: 7200 }),
+        store: MongoStore.create({ mongoUrl: "mongodb+srv://nicolascaporaso:control4970@comerce.nbjkdia.mongodb.net/ecomerce?retryWrites=true&w=majority"}),
         secret: 'un-re-secreto',
         resave: true,
         saveUninitialized: true,
+        ttl: 60 * 10,
     })
 );
+
+iniPassport();
+app.use(passport.initialize()); // Inicializa passport
+app.use(passport.session()); // Enlaza passport con la sesion
+
 
 app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
