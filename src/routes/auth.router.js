@@ -2,12 +2,17 @@ import express from 'express';
 import passport from 'passport';
 import { isAdmin, isUser } from '../middlewares/auth.js';
 
+
+
 export const authRouter = express.Router();
+
 
 authRouter.get('/session', (req, res) => {
     return res.send(JSON.stringify(req.session));
 });
 
+
+//------------------------------------passport local------------------------
 authRouter.get('/register', (req, res) => {
     return res.render('register', {});
 });
@@ -57,6 +62,17 @@ authRouter.get('/perfil', isUser, (req, res) => {
     return res.render('perfil', { user: user });
 });
 
-authRouter.get('/administracion', isUser , (req, res) => {
+authRouter.get('/administracion', isUser, (req, res) => {
     return res.send('datos super secretos clasificados sobre los nuevos ingresos a boca juniors');
 });
+
+
+//--------------------------------github -----------------------------------
+
+authRouter.get("/github",passport.authenticate("github", { scope: ["user:email"] }));
+
+authRouter.get("/github/callback", passport.authenticate("github", { failureRedirect: "/error" }), (req, res) => {
+        // Redirige al usuario a la página deseada después de iniciar sesión correctamente
+        res.redirect("/");
+    }
+);
