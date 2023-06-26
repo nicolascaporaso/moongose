@@ -1,6 +1,8 @@
 export function isUser(req, res, next) {
     if (req.session?.user?.email) {
         return next();
+    } else if (req.session?.passport?.user) {
+        return next();
     }
     return res.status(401).render('error', { error: 'error de autenticacion!' });
 }

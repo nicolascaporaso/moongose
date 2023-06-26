@@ -3,7 +3,6 @@ import passport from 'passport';
 import { isAdmin, isUser } from '../middlewares/auth.js';
 
 
-
 export const authRouter = express.Router();
 
 
@@ -58,7 +57,8 @@ authRouter.get('/logout', (req, res) => {
 });
 
 authRouter.get('/perfil', isUser, (req, res) => {
-    const user = req.session.user;
+    const user = req.session.passport;
+    console.log(user);
     return res.render('perfil', { user: user });
 });
 
@@ -73,6 +73,6 @@ authRouter.get("/github",passport.authenticate("github", { scope: ["user:email"]
 
 authRouter.get("/github/callback", passport.authenticate("github", { failureRedirect: "/error" }), (req, res) => {
         // Redirige al usuario a la página deseada después de iniciar sesión correctamente
-        res.redirect("/");
+        res.redirect("/auth/perfil");
     }
 );

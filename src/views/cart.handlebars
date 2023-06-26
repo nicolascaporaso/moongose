@@ -1,0 +1,39 @@
+<div style="text-align: center;">
+    <h1>Cart</h1>
+    {{#each formattedData.payload}}
+    <div id={{this.id}} style="display: inline-block; margin: 10px; border: 5px solid black;">
+        <img src="{{this.thumbnails}}" alt="product image" width="200" height="200">
+        <h2>{{this.title}}</h2>
+        <p>{{this.description}}</p>
+        <p>Cantidad: {{this.quantity}}</p>
+
+        <button onclick="deleteCart('{{this.cid}}','{{this.id}}')">Eliminar</button>
+    </div>
+    {{/each}}
+</div>
+
+<script>
+    function deleteCart(cid, pid) {
+        fetch(`/api/carts/${cid}/product/${pid}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Hacer algo si la solicitud fue exitosa
+                    alert("producto eliminado");
+                    const element = document.getElementById(pid);
+                    if (element) {
+                        element.remove();
+                    }
+                } else {
+                    // Hacer algo si la solicitud no fue exitosa
+                    alert('Error al eliminar el producto');
+                }
+            })
+            .catch(error => {
+                // Hacer algo si ocurrió un error al enviar la solicitud
+                alert('Error de solicitud');
+            });
+    }
+
+</script>
