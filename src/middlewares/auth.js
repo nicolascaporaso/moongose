@@ -13,3 +13,17 @@ export function isAdmin(req, res, next) {
     }
     return res.status(403).render('error', { error: 'error de autorización!' });
 }
+
+export function isLoggedin (req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    return res.redirect("/products");
+};
+
+export function redirectIfLoggedIn (req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect("/products");
+    }
+    return next();
+};

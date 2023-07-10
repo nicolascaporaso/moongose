@@ -25,11 +25,22 @@ const schema = new Schema({
         max: 100,
     },
 
-    isAdmin: {
-        type: Boolean,
-        required: true,
-        default: false,
+    age: {
+        type: Number, 
+        required: false 
     },
-});
+
+    cartId: { 
+        type: String, 
+        required: false },
+
+    role: {
+        type: String,
+        required: true,
+        default: "user"
+    },
+},
+    { versionKey: false }
+);
 
 export const UserModel = model('users', schema);

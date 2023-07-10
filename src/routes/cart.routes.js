@@ -5,6 +5,7 @@ import { log } from "console";
 
 export const cartRouter = Router()
 const cartSrvc = new CartService();
+
 cartRouter.post("/", async (req, res) => {
     try {
         const cart = await cartSrvc.createCart();

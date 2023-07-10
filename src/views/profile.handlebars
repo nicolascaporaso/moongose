@@ -1,0 +1,74 @@
+<h2 class="perfil-titulo">Tu Perfil</h2>
+<nav class="barra-navegacion">
+    <div class="contenedor-fluido">
+        <a class="logo-enlace" href="http://localhost:8080/products">
+            <img src="https://i.postimg.cc/vB4Vkc4D/ecommerce-2.gif" alt="logo" width="100px"
+                style="margin-left: 1.4rem;" />
+        </a>
+        <button class="boton-navegacion" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" style="color:azure;" href="http://localhost:8080/products">
+                        Volver al Home 🏠
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="fila-perfil">
+        <div class="columna-perfil col col-lg-7 mb-4 mb-lg-0">
+            <div class="tarjeta-perfil card mb-3" style="border-radius: .5rem;">
+                <div class="row-perfil row g-0">
+                    <div class="columna-avatar col-md-4 text-center text-white"
+                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie.png"
+                            alt="Avatar" class="avatar img-fluid my-5 rounded-3" style="width: 100px;" />
+                        <h5 class="nombre">{{firstname}} {{lastname}}</h5>
+                        <p class="admin">{{isadmin}}</p>
+                        <i class="icono-edicion far fa-edit mb-5"></i>
+                    </div>
+                    <div class="columna-detalle col-md-8">
+                        <div class="cuerpo-tarjeta card-body p-4">
+                            <h6 class="titulo-seccion">Información</h6>
+                            <hr class="divisor-seccion mt-0 mb-4" />
+                            <div class="fila-detalle row pt-1">
+                                <div class="columna-detalle col-6 mb-3">
+                                    <h6>Email</h6>
+                                    <p class="text-muted">{{email}}</p>
+                                </div>
+                                <div class="columna-detalle col-6 mb-3">
+                                    <h6>Edad</h6>
+                                    <p class="text-muted">{{age}}</p>
+                                </div>
+                            </div>
+
+                            <h6 class="titulo-seccion">Información del Sitio</h6>
+                            <hr class="divisor-seccion mt-0 mb-4" />
+                            <div class="fila-detalle row py-1">
+                                <div class="columna-detalle col-6 mb-3">
+                                    <h6>Reciente</h6>
+                                    <a href="/cart/{{cartId}}"
+                                        class="boton-perfil btn btn-outline-primary btn-sm">Ver Carrito</a>
+                                </div>
+                                <div class="columna-detalle col-6 mb-3">
+                                    <h6>Cerrar Sesión</h6>
+                                    <a href="/auth/logout" class="boton-perfil btn btn-outline-primary btn-sm">Log
+                                        out</a>
+                                </div>
+                            </div>
+                            <div class="iconos-sociales d-flex justify-content-start">
+                                <a href="#!"><i class="icono-facebook bi bi-facebook me-3"></i></a>
+                                <a href="#!"><i class="icono-twitter bi bi-twitter me-3"></i></a>
+                                <a href="#!"><i class="icono-instagram bi bi-instagram fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

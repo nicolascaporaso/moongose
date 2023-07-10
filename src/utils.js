@@ -1,6 +1,20 @@
-// --------------- MULTER -----------------------
+import path from "path";
+import { fileURLToPath } from "url";
 import multer from "multer";
+import "dotenv/config";
+import { connect } from "mongoose";
+import { Server } from 'socket.io';
+import { MsgModel } from './DAO/models/msg.model.js';
+import { ProductService } from "../src/services/product.service.js";
+import { ProductModel } from "./DAO/models/products.model.js";
+import bcrypt from 'bcrypt';
 
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASS = process.env.MONGO_PASS;
+const DB_NAME = process.env.DB_NAME;
+
+
+// --------------- MULTER -----------------------
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, "public"));
@@ -13,19 +27,18 @@ const storage = multer.diskStorage({
 export const uploader = multer({ storage });
 
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
-import path from "path";
-import { fileURLToPath } from "url";
+
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 
 
 // ------------------mongo-------------------------
-import { connect } from "mongoose";
+
 export async function connectMongo() {
     try {
         await connect(
             /* PONER TU STRING ENTERO ACA */
-            "mongodb+srv://nicolascaporaso:control4970@comerce.nbjkdia.mongodb.net/ecomerce?retryWrites=true&w=majority"
+            `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@comerce.nbjkdia.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
 
         );
         console.log("plug to mongo!");
@@ -36,10 +49,6 @@ export async function connectMongo() {
 }
 
 //----------------SOCKET------------------------------
-import { Server } from 'socket.io';
-import { MsgModel } from './DAO/models/msg.model.js';
-import { ProductService } from "../src/services/product.service.js";
-import { ProductModel } from "./DAO/models/products.model.js";
 
 
 const ProductSrvc = new ProductService();
@@ -85,6 +94,6 @@ export function connectSocket(httpServer) {
 }
 
 //----------------bcrypt------------------------------
-import bcrypt from 'bcrypt';
+
 export const createHash = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 export const isValidPassword = (password, hashPassword) => bcrypt.compareSync(password, hashPassword);

@@ -52,3 +52,142 @@
   text-align: center;
   display: block;
 }
+
+/* Estilos para el título */
+h2.page-title {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding-top: 5rem;
+}
+
+/* Estilos para la barra de navegación */
+nav.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0d6efd;
+}
+
+nav.site-navbar .container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+nav.site-navbar a.logo-link {
+  margin-left: 1.4rem;
+}
+
+button.navbar-toggler {
+  border: none;
+  background-color: transparent;
+}
+
+/* Estilos para la tarjeta */
+div.profile-card-container {
+  max-width: 100%;
+}
+
+div.profile-card-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+div.profile-card {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+div.profile-card-inner {
+  border-radius: 0.5rem;
+}
+
+div.profile-avatar {
+  background-color: #0b6efd;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+div.profile-avatar img.avatar-image {
+  width: 100px;
+}
+
+div.profile-avatar h5.fullname {
+  color: white;
+}
+
+div.profile-avatar p.isadmin {
+  color: white;
+}
+
+div.profile-avatar i.edit-icon {
+  margin-bottom: 5px;
+}
+
+div.profile-details {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+div.profile-details-inner {
+  padding: 1rem;
+}
+
+/* Estilos para los elementos dentro de la tarjeta */
+h6.profile-section-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+hr.section-divider {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+div.profile-details-row {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+div.profile-details-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 50%;
+}
+
+a.profile-button {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.2rem;
+  text-decoration: none;
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+}
+
+div.profile-social-icons {
+  display: flex;
+  justify-content: start;
+}
+
+div.profile-social-icons a.social-icon-link {
+  margin-right: 0.75rem;
+}
+
+i.facebook-icon,
+i.twitter-icon {
+  margin-right: 0.75rem;
+}
+
+i.instagram-icon {
+  font-size: 1.33333333em;
+}
