@@ -7,8 +7,6 @@ import { CartService } from '../services/cart.service.js';
 import { createHash, isValidPassword } from '../utils.js';
 
 const LocalStrategy = local.Strategy;
-const cartSrvc = new CartService();
-
 
 // variables de entorno
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
@@ -78,7 +76,7 @@ export function iniPassport() {
                         return done(null, false);
                     }
 
-                    const newCart = await cartSrvc.createCart(); // Crear un nuevo carrito                
+                    const newCart = await CartService.createCart(); // Crear un nuevo carrito                
 
                     const newUser = {
                         email,
@@ -132,7 +130,7 @@ export function iniPassport() {
 
                     let user = await UserModel.findOne({ email: profile.email });
                     if (!user) {
-                        const newCart = await cartSrvc.createCart(); // Crear un nuevo carrito  
+                        const newCart = await CartService.createCart(); // Crear un nuevo carrito  
 
                         const newUser = {
                             email: profile.email,
@@ -176,7 +174,7 @@ export function iniPassport() {
                 const { email } = profile._json;
                 let user = await UserModel.findOne({ email: email });
                 if (!user) {
-                    const newCart = await Services.addCart();
+                    const newCart = await CartService.createCart(); // Crear un nuevo carrito  
 
                     const displayName = profile.displayName.split(" ");
                     const lastName = displayName[1] || "nolastname";

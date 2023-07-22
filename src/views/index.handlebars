@@ -52,29 +52,18 @@
 
 
   document.addEventListener("DOMContentLoaded", function (event) {
-    // Verificar si existe un ID de carrito en el Local Storage
-    const cartId = localStorage.getItem('cartId');
-
-    if (!cartId) {
-      // No se encontró un ID de carrito, crear uno nuevo
-      alert("no existe carro");
-      createCart();
-    } else {
-      // Se encontró un ID de carrito.
-    }
+    getCartSession();
   });
 
-  async function createCart() {
+  async function getCartSession() {
     try {
-      const response = await fetch('/api/carts', { method: 'post' });
+      const response = await fetch('/api/carts/cartid/id', { method: 'get' });
       if (response.ok) {
         const data = await response.json();
-        const cartId = data.id;
-        alert(cartId)
+        const cartId = data.cartId;
         localStorage.setItem('cartId', cartId);
       } else {
-        console.error('Error en la solicitud:', response.status);
-        // Manejar el error adecuadamente
+        alert("no se pudo obtener su carrito, intente volver a iniciar sesion")
       }
     } catch (error) {
       console.error('Error:', error);
@@ -95,12 +84,10 @@
             element.remove();
           }
         } else {
-          // Hacer algo si la solicitud no fue exitosa
           alert('Error al eliminar el producto');
         }
       })
       .catch(error => {
-        // Hacer algo si ocurrió un error al enviar la solicitud
         alert('Error de solicitud');
       });
   }
@@ -125,7 +112,6 @@
       })
       .catch(error => {
         console.error('Error:', error);
-        // Manejar el error adecuadamente
       });
   }
 

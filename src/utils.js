@@ -51,7 +51,7 @@ export async function connectMongo() {
 //----------------SOCKET------------------------------
 
 
-const ProductSrvc = new ProductService();
+//const ProductSrvc = new ProductService();
 
 export function connectSocket(httpServer) {
 
