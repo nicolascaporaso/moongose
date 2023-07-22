@@ -1,5 +1,1 @@
-Client ID
-ad12acdfa39e7f623dcd
-
-client secret
-450ab2ea36878674cf7c26bf2371974c27bfcaa1
+nada por aqui
