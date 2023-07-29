@@ -1,13 +1,11 @@
-import path from "path";
-import { fileURLToPath } from "url";
-import multer from "multer";
+import bcrypt from 'bcrypt';
 import "dotenv/config";
 import { connect } from "mongoose";
+import multer from "multer";
+import path from "path";
 import { Server } from 'socket.io';
+import { fileURLToPath } from "url";
 import { MsgModel } from './DAO/models/msg.model.js';
-import { ProductService } from "../src/services/product.service.js";
-import { ProductModel } from "./DAO/models/products.model.js";
-import bcrypt from 'bcrypt';
 
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASS = process.env.MONGO_PASS;

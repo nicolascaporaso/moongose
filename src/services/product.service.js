@@ -1,11 +1,8 @@
-import { error } from "console";
-import { ProductModel } from "../DAO/models/products.model.js";
-import { query } from "express";
-import { type } from "os";
+import ProductManager from '../DAO/managers/prouctManagerMongoDB.js';
 
 class PdctService {
 
-    async validateProduct(description, title, code, price, stock) {
+    async validateProduct(title, description, code, price, stock) {
         if (!description || !title || !code || !price || !stock) {
             console.log("validation error: please complete all data.");
             throw new error("validation error: please complete all data.");
@@ -27,7 +24,7 @@ class PdctService {
         }
 
         try {
-            const queryRes = await ProductModel.paginate(query, { limit: limit || 10, page: page || 1, sort: { title: validatedSort } });
+            const queryRes = await ProductManager.getProducts(query, { limit: limit || 10, page: page || 1, sort: { title: validatedSort } });
 
             return queryRes;
 
@@ -38,7 +35,7 @@ class PdctService {
 
     async getOne(id) {
         try {
-            const product = await ProductModel.findOne({ _id: id });
+            const product = await ProductManager.getOne({ _id: id });
             return product;
         } catch (error) {
             console.log(error);
@@ -46,11 +43,11 @@ class PdctService {
         }
     }
 
-    async createOne(description, title, code, price, stock, status, thumbnails) {
+    async createOne(title, description, code, price, stock, status, thumbnails) {
         try {
             this.validateProduct(description, title, code, price, stock, status);
 
-            const productCreated = await ProductModel.create({
+            const productCreated = await ProductManager.createOne({
                 description,
                 title,
                 code,
@@ -68,7 +65,7 @@ class PdctService {
     }
 
     async deleteOne(id) {
-        const deleted = await ProductModel.deleteOne({ _id: id });
+        const deleted = await ProductManager.deleteOne({ _id: id });
         return deleted;
     }
 
@@ -77,13 +74,13 @@ class PdctService {
         stock = parseInt(stock);
         if (!id) throw new error("invalid ID");
         this.validateProduct(description, title, code, price, stock, status);
-        const productupdate = await ProductModel.updateOne({ _id: id }, { title, description, code, price, stock, status, thumbnails });
+        const productupdate = await ProductManager.updateOne(id, description, title, code, price, stock, status, thumbnails);
         return productupdate;
     }
 
     async getRealTimeProducts() {
         try {
-            const products = await ProductModel.find({}).lean();
+            const products = await ProductManager.getRealTimeProducts();
             return products;
         } catch (error) {
             console.error(error);
