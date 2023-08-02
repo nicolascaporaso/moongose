@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { isAdmin, isUser } from '../middlewares/auth.js';
+import { isAdmin, isLoggedin, isUser } from '../middlewares/auth.js';
 import { viewsController } from "../controllers/view.controller.js";
 
 
 export const viewRouter = Router()
 
 
-viewRouter.get("/realtimeproducts", viewsController.viewRealTime);
+viewRouter.get("/realtimeproducts",isUser, viewsController.viewRealTime);
 
-viewRouter.get("/products", isUser, viewsController.getAllProducts);
+viewRouter.get("/products", isLoggedin, viewsController.getAllProducts);
 
 viewRouter.get("/cart/:cid", isUser, viewsController.getCartById);

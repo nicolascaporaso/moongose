@@ -1,8 +1,10 @@
-
+import SessionDTO from "../DTO/Session.DTO.js";
 class SessionController{
 
 session (req, res) {
-    return res.send(JSON.stringify(req.session));
+// llamar al DTO 
+    const dataFormated = new SessionDTO(req.session);
+    return res.send(JSON.stringify(dataFormated));
 };
 
 failReg(req, res) {
@@ -49,15 +51,14 @@ logout (req, res) {
 }
 
 profile (req, res) {
-    console.log(req.session.user);
-    const role = req.session.user.role === "admin" ? "Administrador" : "Usuario Estándar";
+    const dataFormated = new SessionDTO(req.session);
+    //const role = req.session.user.role === "admin" ? "Administrador" : "Usuario Estándar";
     return res.render("profile", {
-        firstname: req.session.user.firstName,
-        lastname: req.session.user.lastName,
-        email: req.session.user.email,
-        isadmin: role,
-        age: req.session.user.age,
-        cartId: req.session.user.cartId,
+        firstname: dataFormated.firstName,
+        lastname: dataFormated.lastName,
+        email: dataFormated.email,
+        isadmin: dataFormated.role,
+        cartId: dataFormated.cartId,
     });
 }
 

@@ -1,5 +1,4 @@
-import { promises as fs } from "fs";
-import SyncFs from "fs";
+import SyncFs, { promises as fs } from "fs";
 
 
 class ProductManager {

@@ -4,13 +4,10 @@ import { isAdmin, isUser, isLoggedin,  } from '../middlewares/auth.js';
 import { sessionController } from '../controllers/auth.controller.js';
 
 
-
 export const authRouter = express.Router();
 
-
 //-------------------------------------- para probar la session -----------------------
-authRouter.get('/session', sessionController.session);
-
+authRouter.get('/session/current', sessionController.session);
 
 //------------------------------------passport local------------------------
 authRouter.get("/failregister", sessionController.failReg);
