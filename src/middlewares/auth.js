@@ -30,8 +30,9 @@ export function redirectIfLoggedIn (req, res, next) {
 };
 
 export function isUserCartOwner (req, res, next) {
-    if (req.session?.user?.cartId != req.params.cid) {
-        return res.redirect("/products");
+    console.log(req.session.user.cartId, req.params.cid );
+    if (req.session?.user?.cartId == req.params.cid) {
+        return next();
     }
-    return next();
+    return res.status(403).render('error', { error: 'error de autorización!' });
 };

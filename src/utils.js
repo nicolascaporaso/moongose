@@ -5,7 +5,7 @@ import multer from "multer";
 import path from "path";
 import { Server } from 'socket.io';
 import { fileURLToPath } from "url";
-import { MsgModel } from './DAO/models/msg.model.js';
+import { MsgModel } from './DAO/mongo/models/msg.model.js';
 
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASS = process.env.MONGO_PASS;

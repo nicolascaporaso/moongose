@@ -13,9 +13,9 @@ cartRouter.get("/:cid/purchase", ticketController.purchase);
 
 cartRouter.get("/", cartsController.getCarts);
 
-cartRouter.put("/:cid",isUser ,isUserCartOwner ,cartsController.updateCart);
+cartRouter.put("/:cid",isUser ,cartsController.updateCart);
 
-cartRouter.put("/:cid/product/:pid",isUser, cartsController.addProductToCart);
+cartRouter.put("/:cid/product/:pid",isUser, isUserCartOwner, cartsController.addProductToCart);
 
 cartRouter.delete("/:cid/product/:pid",isUser, cartsController.removeProductFromCart);
 

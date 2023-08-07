@@ -1,6 +1,6 @@
 //alt shift o
 
-import CartManager from "../DAO/managers/cartManagerMongoDB.js";
+import CartManager from "../DAO/mongo/cartManagerMongoDB.js";
 
 class CartSrvc {
 

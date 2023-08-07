@@ -1,6 +1,6 @@
-import TicketManager from '../DAO/managers/ticketManagerMongoDB.js';
-import CartManager from '../DAO/managers/cartManagerMongoDB.js';
-import ProductManager from '../DAO/managers/prouctManagerMongoDB.js';
+import TicketManager from '../DAO/mongo/ticketManagerMongoDB.js';
+import CartManager from '../DAO/mongo/cartManagerMongoDB.js';
+import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
 
 class TcktService {
     async createTicket(cId) {
@@ -16,8 +16,8 @@ class TcktService {
                 if (product.stock >= cartItem.quantity) {
                     product.stock -= cartItem.quantity;
                     totalCost += (product.price * cartItem.quantity);
-                    ticketProducts.push({ product: product._id, quantity: cartItem.quantity });
                     const id = cartItem.idProduct._id.toString();
+                    ticketProducts.push({ product: product.title, quantity: cartItem.quantity });
                     await ProductManager.updateOne(id, product.description, product.title, product.code, product.price, product.stock, product.status, product.thumbnails);
                     cartupdate = await CartManager.removeProductFromCart(cId,id);
                 } else {
@@ -33,7 +33,7 @@ class TcktService {
                     purchase_datetime: new Date(),
                     amount: totalCost,
                     purchaser: 'comprador', 
-                    idProducts: ticketProducts,
+                    idProducts: ticketProducts ,
                 };
 
                 console.log(ticketData);

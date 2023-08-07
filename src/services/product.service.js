@@ -1,4 +1,4 @@
-import ProductManager from '../DAO/managers/prouctManagerMongoDB.js';
+import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
 
 class PdctService {
 

@@ -2,7 +2,7 @@ import TicketService from '../services/ticket.service.js';
 
 class TicketController{
     async purchase (req, res) {
-        const cId = req.params.cid
+        const cId = req.params.cid;
         try {
             const ticket = await TicketService.createTicket(cId);
             return res.status(201).json(ticket);

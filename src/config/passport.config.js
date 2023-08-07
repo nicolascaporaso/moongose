@@ -2,7 +2,7 @@ import passport from 'passport';
 import FacebookStrategy from 'passport-facebook';
 import GitHubStrategy from 'passport-github2';
 import local from 'passport-local';
-import { UserModel } from '../DAO/models/user.model.js';
+import { UserModel } from '../DAO/mongo/models/user.model.js';
 import { CartService } from '../services/cart.service.js';
 import { createHash, isValidPassword } from '../utils.js';
 

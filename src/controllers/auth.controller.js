@@ -1,4 +1,4 @@
-import SessionDTO from "../DTO/Session.DTO.js";
+import SessionDTO from "../DAO/DTO/Session.DTO.js";
 class SessionController{
 
 session (req, res) {
