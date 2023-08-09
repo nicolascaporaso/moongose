@@ -13,8 +13,8 @@ import { apiRouter } from "./routes/api.routes.js";
 import { authRouter } from './routes/auth.router.js';
 import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
-import { __dirname, connectMongo, connectSocket } from './utils.js';
-
+import { __dirname, connectMongo, connectSocket } from '../src/utils/utils.js';
+import errorHandler from "../src/middlewares/error.js"
 
 const app = express();
 const port = 8081;
@@ -69,3 +69,5 @@ app.use('/auth', authRouter);
 
 // Websockets
 connectSocket(httpServer);
+
+app.use(errorHandler);
