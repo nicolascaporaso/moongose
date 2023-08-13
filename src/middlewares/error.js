@@ -13,6 +13,7 @@ const error = (err, req, res, next) => {
             res.status(400).json({ status: 'error', error: err.name, cause: err.cause });
             break;
         case EErros.INVALID_REQUEST:
+            res.status(404).json({ status: 'error', error: err.name, cause: err.cause });
             break;
 
         default:

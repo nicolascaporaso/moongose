@@ -15,6 +15,7 @@ import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
 import { __dirname ,connectMongo, connectSocket } from '../src/utils.js';
 import errorHandler from "../src/middlewares/error.js"
+import { log } from "console";
 
 const app = express();
 const port = 8081;
@@ -72,3 +73,5 @@ app.use('/auth', authRouter);
 connectSocket(httpServer);
 
 app.use(errorHandler);
+
+console.log(process.env.NODE_ENV);

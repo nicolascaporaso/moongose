@@ -1,7 +1,7 @@
 import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
 import CustomError from '../errors/customError.js';
-import EErros from '../errors/enums.js'
-import customErrorMsg from '../errors/customErrorMsg.js'
+import customErrorMsg from '../errors/customErrorMsg.js';
+import EErros from '../errors/enums.js';
 
 class PdctService {
 
