@@ -13,7 +13,7 @@ import { apiRouter } from "./routes/api.routes.js";
 import { authRouter } from './routes/auth.router.js';
 import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
-import { __dirname, connectMongo, connectSocket } from '../src/utils/utils.js';
+import { __dirname ,connectMongo, connectSocket } from '../src/utils.js';
 import errorHandler from "../src/middlewares/error.js"
 
 const app = express();
@@ -34,6 +34,7 @@ connectMongo();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, "public")));
 
 //Engine handlerbars 

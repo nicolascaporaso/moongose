@@ -1,4 +1,4 @@
-import EErros from "../utils/errors/enums.js"
+import EErros from "../errors/enums.js"
 
 const error = (err, req, res, next) => {
     const error = err;
@@ -8,6 +8,7 @@ const error = (err, req, res, next) => {
 
     switch (error.code) {
         case EErros.PRODUCT_ALREADY_EXISTS:
+            
         case EErros.INVALID_TYPES_ERROR:
             isJson
                 ? res.status(400).render('error', { error: err.name, cause: err.cause, error_code: err.code })

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { uploader } from "../utils/utils.js";
+import { uploader } from "../utils.js";
 import {productsController} from "../controllers/products.controller.js";
 import { isAdmin } from "../middlewares/auth.js";
 
@@ -10,7 +10,9 @@ pdctRouter.get('/', productsController.getAll);
 
 pdctRouter.get("/:pid", productsController.getOne);
 
-pdctRouter.post("/", uploader.single('thumbnails'), isAdmin, productsController.createOne);
+//pdctRouter.post("/", uploader.single('thumbnails'), isAdmin, productsController.createOne);
+
+pdctRouter.post("/", uploader.single('thumbnails'), productsController.createOne);
 
 pdctRouter.put("/:id", uploader.single('thumbnails'),isAdmin, productsController.updateOne); 
 

@@ -1,11 +1,21 @@
 import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
+import CustomError from '../errors/customError.js';
+import EErros from '../errors/enums.js'
+import customErrorMsg from '../errors/customErrorMsg.js'
 
 class PdctService {
 
     async validateProduct(title, description, code, price, stock) {
         if (!description || !title || !code || !price || !stock) {
-            console.log("validation error: please complete all data.");
-            throw new error("validation error: please complete all data.");
+            //console.log("validation error: please complete all data.");
+            //throw new error("validation error: please complete all data.");
+
+            return CustomError.createError({
+                name: 'Validation Error',
+                message: '🛑 Wrong Data Format.',
+                code: EErros.INVALID_TYPES_ERROR,
+                cause: customErrorMsg.generateProductErrorInfo(title, description, code, price, stock),
+            });
         }
     }
 
