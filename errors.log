@@ -1,0 +1,15 @@
+debug: prueba de Debug message
+debug: prueba de Debug message
+debug: prueba de Debug message
+http: prueba de HTTP message
+info: prueba de Info message
+warn: prueba de Warning message
+http: prueba de HTTP message
+info: prueba de Info message
+warn: prueba de Warning message
+error: prueba de Error message
+http: prueba de HTTP message
+info: prueba de Info message
+warn: prueba de Warning message
+error: prueba de Error message
+fatal: prueba de Fatal message

@@ -1,5 +1,6 @@
 import { ProductService } from "../services/product.service.js";
 import { CartService } from "../services/cart.service.js";
+import logger from "../config/logger.js";
 
 
 class ViewsController {

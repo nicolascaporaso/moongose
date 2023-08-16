@@ -13,9 +13,11 @@ import { apiRouter } from "./routes/api.routes.js";
 import { authRouter } from './routes/auth.router.js';
 import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
-import { __dirname ,connectMongo, connectSocket } from '../src/utils.js';
+import { __dirname, connectMongo, connectSocket } from '../src/utils.js';
 import errorHandler from "../src/middlewares/error.js"
 import { log } from "console";
+import logger from "./config/logger.js";
+
 
 const app = express();
 const port = 8081;
@@ -26,7 +28,7 @@ const MONGO_PASS = process.env.MONGO_PASS;
 const DB_NAME = process.env.DB_NAME;
 
 const httpServer = app.listen(port, () => {
-    console.log("example app listen port " + "http://localhost:" + port + "/api/products");
+    logger.info("Server listen port " + "http://localhost:" + port + "/")
 });
 
 // Conexión a mongo 
@@ -47,7 +49,7 @@ app.set('views', __dirname + '/views');
 // Configuración de la sesión.
 app.use(
     session({
-        store: MongoStore.create({ mongoUrl: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@comerce.nbjkdia.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`}),
+        store: MongoStore.create({ mongoUrl: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@comerce.nbjkdia.mongodb.net/${DB_NAME}?retryWrites=true&w=majority` }),
         secret: secreto,
         resave: false,
         saveUninitialized: false,
@@ -73,5 +75,14 @@ app.use('/auth', authRouter);
 connectSocket(httpServer);
 
 app.use(errorHandler);
+logger.info("servidor iniciado en modo:" + " " + process.env.NODE_ENV)
 
-console.log(process.env.NODE_ENV);
+app.get("/loggerTest", (req, res) => {
+    logger.debug("prueba de Debug message");
+    logger.http("prueba de HTTP message");
+    logger.info("prueba de Info message");
+    logger.warn("prueba de Warning message");
+    logger.error("prueba de Error message");
+    logger.fatal("prueba de Fatal message");
+    res.send("Logs generated.");
+});

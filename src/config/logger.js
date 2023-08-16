@@ -1,59 +1,86 @@
+import { log } from "console";
+import "dotenv/config";
 import winston from "winston";
 
-/*const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      level: "info",
-      format: winston.format.colorize({ all: true }),
-    }),
-    new winston.transports.File({
-      filename: "./errors.log",
-      level: "warn",
-      format: winston.format.simple(),
-    }),
-  ],
-});
-
-
-
-/* req.logger.info(
-    `${req.method} on ${req.url} - ${new Date().toLocaleTimeString()}`
-  ); */
-
-
-const devLogger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      level: "info",
-      format: winston.format.colorize({ all: true }),
-    }),
-  ],
-});
-
-const prodLogger=winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      level: "http",
-      format: winston.format.colorize({ all: true }),
-    }),
-    new winston.transports.File({
-      filename: "./errors.log",
-      level: "warn",
-      format: winston.format.simple(),
-    }),
-  ],
-});
-
-
-export const addLogger = (req, res, next) => {
-  
-  const enviroment = process.env.NODE_ENV || 'development';
-
-  if (envirtoment === 'production'){
-
-  }else if (environment === 'development') {
-
+const customLevelsOptions = {
+  levels: {
+    debug: 0,
+    http: 1,
+    info: 2,
+    warn: 3,
+    error: 4,
+    fatal: 5,
+  },
+  colors: {
+    debug: "grey",
+    http: "green",
+    info: "blue",
+    warn: "yellow",
+    error: "orange",
+    fatal: "red",
   }
+}
 
-  next();
-};
+const logFormat = winston.format.simple();
+
+
+if (process.env.NODE_ENV === "production") {
+  var logger = winston.createLogger({
+    levels: customLevelsOptions.levels,
+    transports: [
+      new winston.transports.Console({
+        level: "debug",
+        format: logFormat
+      }),
+
+      new winston.transports.Console({
+        level: "http",
+        format: logFormat
+      }),
+
+      new winston.transports.Console({
+        level: "info",
+        format: logFormat
+      }),
+
+      new winston.transports.File({
+        filename: "./errors.log",
+        level: "warn",
+        format: logFormat
+      }),
+
+      new winston.transports.File({
+        filename: "./errors.log",
+        level: "error",
+        format: logFormat
+      })
+    ]
+  });
+} else {
+  var logger = winston.createLogger({
+    levels: customLevelsOptions.levels,
+    transports: [
+      new winston.transports.Console({
+        level: "info",
+        format: logFormat
+      }),
+      new winston.transports.File({
+        filename: "./errors.log",
+        level: "warn", 
+        format: logFormat
+      }), 
+      new winston.transports.File({
+        filename: "./errors.log",
+        level: "error",
+        format: winston.format.simple()
+      }),
+      new winston.transports.File({
+        filename: "./errors.log",
+        level: "fatal", 
+        format: logFormat
+      })
+    ]
+  })
+}
+
+export default logger;

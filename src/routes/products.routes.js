@@ -10,9 +10,7 @@ pdctRouter.get('/', productsController.getAll);
 
 pdctRouter.get("/:pid", productsController.getOne);
 
-//pdctRouter.post("/", uploader.single('thumbnails'), isAdmin, productsController.createOne);
-
-pdctRouter.post("/", uploader.single('thumbnails'), productsController.createOne);
+pdctRouter.post("/", uploader.single('thumbnails'), isAdmin, productsController.createOne);
 
 pdctRouter.put("/:id", uploader.single('thumbnails'),isAdmin, productsController.updateOne); 
 
