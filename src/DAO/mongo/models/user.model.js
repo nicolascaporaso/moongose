@@ -43,4 +43,5 @@ const schema = new Schema({
     { versionKey: false }
 );
 
+
 export const UserModel = model('users', schema);

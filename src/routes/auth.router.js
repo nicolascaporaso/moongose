@@ -2,7 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import { isAdmin, isUser, isLoggedin,  } from '../middlewares/auth.js';
 import { sessionController } from '../controllers/auth.controller.js';
-
+import {passRecoveryRouter} from '../routes/passRecovey.routes.js'
 
 export const authRouter = express.Router();
 
@@ -43,3 +43,5 @@ authRoutes.get("/google", passport.authenticate("google", { scope: ["profile", "
 
 authRoutes.get("/google/callback",passport.authenticate("google", { failureRedirect: "/auth/fail-register" }), sessionController.googleCallback);
 */
+
+authRouter.use("/recovery", passRecoveryRouter);
