@@ -86,15 +86,14 @@ class ResetPasswordController {
             // Verificar y decodificar el token
             jwt.verify(token, 'tu-secreto', async (err, decoded) => {
                 if (err) {
-                    return res.status(401).send('Token no válido');
+                    res.render('tokenExpired');
                 }
 
                 // Buscar el usuario por su ID
-                //const user = await User.findById(decoded.userId);
                 const user = await User.getUserById(decoded.userId);
 
                 if (!user) {
-                    return res.status(404).send('Usuario no encontrado');
+                    return res.status(404).send('Usuario no encontrado, vuelva a intentarlo');
                 }
 
                 if (newPassword === user.password) {

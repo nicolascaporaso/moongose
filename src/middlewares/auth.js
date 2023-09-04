@@ -7,6 +7,15 @@ export function isUser(req, res, next) {
 }
 
 
+export function isPremium(req, res, next) {
+    const userRole = req.session?.user?.role;
+    if (userRole === 'admin') {
+        return next();
+    }
+    return res.status(403).render('error', { error: 'error de autorización!' });
+}
+
+
 export function isAdmin(req, res, next) {
     const userRole = req.session?.user?.role;
     if (userRole === 'admin') {

@@ -1,5 +1,5 @@
 import { ProductService } from '../services/product.service.js';
-
+import SessionDTO from "../DAO/DTO/Session.DTO.js";
 
 class ProductsController {
     async getAll(req, res) {
@@ -43,10 +43,11 @@ class ProductsController {
     }
 
     async createOne(req, res) {
+        const dataUser = new SessionDTO(req.session);
         const { title, description, code, price, stock, status } = req.body;
         const thumbnails = "/" + req.file.filename;
         try {
-            const productCreated = await ProductService.createOne(title, description, code, price, stock, status, thumbnails)
+            const productCreated = await ProductService.createOne(title, description, code, price, stock, status, thumbnails, dataUser )
 
             return res.status(201).json({
                 status: "success",
@@ -85,8 +86,9 @@ class ProductsController {
 
 
     async delete(req, res) {
+        const dataUser = new SessionDTO(req.session);
         try {
-            const product = await ProductService.deleteOne(req.params.id)
+            const product = await ProductService.deleteOne(req.params.id, dataUser)
 
             return res.status(200).json({
                 status: "success",

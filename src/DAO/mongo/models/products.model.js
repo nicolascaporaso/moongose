@@ -9,7 +9,8 @@ const pSchema = new Schema({
     price: { type: Number, required: true, max: 100000, unique: false },
     stock: { type: Number, required: true, max: 100, unique: false },
     status: { type: String, required: false, max: 100 },
-    thumbnails: { type: String, required: true, max: 200, unique: false }
+    thumbnails: { type: String, required: true, max: 200, unique: false },
+    owner: { type: String, unique: false, required: true },
     },
     { versionKey: false }
     );
