@@ -1,0 +1,169 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - products
+      responses:
+        '200':
+          description: Productos obtenidos satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"  # Referencia al esquema de producto (Product)
+
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - products
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#components/requestBodies/createProduct"  # Referencia al requestBody de creación de producto (createProduct)
+      responses:
+        '200':
+          description: Producto creado exitosamente
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto por ID
+      tags:
+        - products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+      responses:
+        '200':
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/Product"  # Referencia al esquema de producto (Product)
+        '404':
+          description: Producto no encontrado
+
+    put:
+      summary: Actualiza un producto por ID
+      tags:
+        - products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#components/requestBodies/createProduct"  # Referencia al requestBody de creación de producto (createProduct)
+      responses:
+        '200':
+          description: Producto actualizado exitosamente
+
+    delete:
+      summary: Elimina un producto por ID
+      tags:
+        - products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+      responses:
+        '200':
+          description: Producto eliminado exitosamente
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+          maxLength: 100
+        description:
+          type: string
+          description: Descripción del producto
+          maxLength: 100
+        code:
+          type: string
+          description: Código del producto
+          maxLength: 100
+        price:
+          type: number
+          description: Precio del producto
+          maximum: 100000
+        stock:
+          type: number
+          description: Stock del producto
+          maximum: 100
+        status:
+          type: string
+          description: Estado del producto
+          maxLength: 100
+        thumbnails:
+          type: string
+          description: URL de la imagen del producto
+          maxLength: 200
+        owner:
+          type: string
+          description: Propietario del producto
+      required:
+        - title
+        - description
+        - code
+        - price
+        - stock
+        - thumbnails
+        - owner
+
+  requestBodies:
+    createProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        code:
+          type: string
+          description: Código del producto
+        price:
+          type: number
+          description: Precio del producto
+        stock:
+          type: number
+          description: Stock del producto
+        status:
+          type: string
+          description: Estado del producto
+        thumbnails:
+          type: string
+          description: URL de la imagen del producto
+        owner:
+          type: string
+          description: Propietario del producto
+      required:
+        - title
+        - description
+        - code
+        - price
+        - stock
+        - thumbnails
+        - owner
+      example:
+        title: Ejemplo de producto
+        description: Descripción del producto
+        code: ABC123
+        price: 29.99
+        stock: 100
+        thumbnails: https://example.com/product.jpg
+        owner: Propietario del producto

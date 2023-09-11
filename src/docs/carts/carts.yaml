@@ -1,0 +1,137 @@
+paths:
+  /api/carts:
+    post:
+      summary: Crea un carrito de compras
+      tags:
+        - carts
+      responses:
+        '200':
+          description: Carrito creado exitosamente
+
+    get:
+      summary: Obtiene todos los carritos de compras
+      tags:
+        - carts
+      responses:
+        '200':
+          description: Carritos obtenidos satisfactoriamente
+
+  /api/carts/{cid}:
+    get:
+      summary: Obtiene un carrito de compras por ID
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito de compras
+      responses:
+        '200':
+          description: Carrito encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/CartItem"  # Referencia al esquema de carrito de compras (CartItem)
+        '404':
+          description: Carrito no encontrado
+
+    put:
+      summary: Actualiza un carrito de compras por ID
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito de compras
+      responses:
+        '200':
+          description: Carrito actualizado exitosamente
+
+    delete:
+      summary: Elimina un carrito de compras por ID
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito de compras
+      responses:
+        '200':
+          description: Carrito eliminado exitosamente
+
+  /api/carts/{cid}/product/{pid}:
+    put:
+      summary: Agrega un producto a un carrito de compras
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito de compras
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto a agregar
+      responses:
+        '200':
+          description: Producto agregado al carrito exitosamente
+
+    delete:
+      summary: Elimina un producto de un carrito de compras
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito de compras
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto a eliminar
+      responses:
+        '200':
+          description: Producto eliminado del carrito exitosamente
+
+  /api/carts/cartid/id:
+    get:
+      summary: Obtiene el ID del carrito de la sesión activa
+      tags:
+        - carts
+      responses:
+        '200':
+          description: ID del carrito de la sesión activa obtenido satisfactoriamente
+
+components:
+  schemas:
+    CartItem:
+      type: object
+      properties:
+        idProduct:
+          type: ObjectId
+          description: ID del producto en el carrito
+        quantity:
+          type: Number
+          description: Cantidad del producto en el carrito
+      additionalProperties: false
+
+  requestBodies:
+    createCartItem:
+      type: object
+      properties:
+        idProduct:
+          type: ObjectId
+          description: ID del producto en el carrito
+        quantity:
+          type: Number
+          description: Cantidad del producto en el carrito
+      required:
+        - idProduct
+        - quantity
+      example:
+        idProduct: ObjectId("product_id_here")
+        quantity: 2

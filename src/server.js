@@ -18,6 +18,12 @@ import errorHandler from "../src/middlewares/error.js"
 import { log } from "console";
 import logger from "./config/logger.js";
 
+//swagger
+
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
+
+
 
 const app = express();
 const port = 8081;
@@ -45,7 +51,6 @@ app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-
 // Configuración de la sesión.
 app.use(
     session({
@@ -57,12 +62,27 @@ app.use(
     })
 );
 
-
 //Passport
 iniPassport();
 app.use(passport.initialize()); // Inicializa passport
 app.use(passport.session()); // Enlaza passport con la sesion
 app.use(flash());
+
+//swagger
+const swaggerOptions = {
+    definition: {
+        openapi: "3.0.1",
+        info: {
+            title: "Documentacion App web para compras",
+            description: "Este proyecto Permite generar una app de compras facil y rapida.",
+        },
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`],
+};
+const specs = swaggerJSDoc(swaggerOptions);
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
+
 
 
 // Routes
