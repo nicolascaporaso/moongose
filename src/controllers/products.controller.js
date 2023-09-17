@@ -51,7 +51,7 @@ class ProductsController {
 
             return res.status(201).json({
                 status: "success",
-                msg: "user created",
+                msg: "Product create",
                 data: productCreated,
             });
 
@@ -71,7 +71,7 @@ class ProductsController {
 
             return res.status(201).json({
                 status: "success",
-                msg: "user uptaded",
+                msg: "product uptaded",
                 data: { _id: id, description, title, code, price, stock, status, thumbnails },
             });
         } catch (e) {

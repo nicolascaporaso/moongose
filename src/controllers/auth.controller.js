@@ -4,7 +4,7 @@ class SessionController{
 session (req, res) {
 // llamar al DTO 
     const dataFormated = new SessionDTO(req.session);
-    return res.send(JSON.stringify(dataFormated));
+    return res.status(200).json(dataFormated);
 };
 
 failReg(req, res) {

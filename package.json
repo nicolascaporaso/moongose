@@ -35,12 +35,15 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./src/test/supertest.test.js",
     "start": "set NODE_ENV=production && nodemon -e yaml,js ./src/server.js",
     "dev": "set NODE_ENV=development && nodemon -e yaml,js ./src/server.js"
   },
   "description": "",
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2"
+    "@faker-js/faker": "^8.0.2",
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   }
 }

@@ -59,6 +59,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         ttl: 800000,
+        name: 'coderCookie',
     })
 );
 
