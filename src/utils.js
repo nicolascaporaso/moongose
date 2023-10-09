@@ -6,16 +6,18 @@ import path from "path";
 import { Server } from 'socket.io';
 import { fileURLToPath } from "url";
 import { MsgModel } from './DAO/mongo/models/msg.model.js';
+import { config } from './config/config.js';
 
-const MONGO_USER = process.env.MONGO_USER;
-const MONGO_PASS = process.env.MONGO_PASS;
-const DB_NAME = process.env.DB_NAME;
+const MONGO_USER = config.MONGO_USER
+const MONGO_PASS = config.MONGO_PASS
+const DB_NAME = config.DB_NAME
 
 
 // --------------- MULTER -----------------------
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "public"));
+        cb(null, path.join(process.cwd(), "public"));
+        //process.cwd()
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);

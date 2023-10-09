@@ -5,12 +5,13 @@ import local from 'passport-local';
 import { UserModel } from '../DAO/mongo/models/user.model.js';
 import { CartService } from '../services/cart.service.js';
 import { createHash, isValidPassword } from '../utils.js';
+import { config } from './config.js';
 
 const LocalStrategy = local.Strategy;
 
 // variables de entorno
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+const GITHUB_CLIENT_ID = config.GITHUB_CLIENT_ID
+const GITHUB_CLIENT_SECRET = config.FACEBOOK_CLIENT_SECRET
 
 export function iniPassport() {
 
@@ -89,7 +90,7 @@ export function iniPassport() {
                     };
 
                     let userCreated = await UserModel.create(newUser);
-                    console.log(userCreated);
+                    console.log({userCreated});
                     console.log('User Registration succesful');
 
 
@@ -111,7 +112,7 @@ export function iniPassport() {
                 callbackURL: 'http://127.0.0.1:8081/auth/github/callback',
             },
             async (accesToken, _, profile, done) => {
-                console.log(profile);
+                console.log({profile});
                 try {
                     const res = await fetch('https://api.github.com/user/emails', {
                         headers: {
@@ -153,7 +154,7 @@ export function iniPassport() {
 
                 } catch (e) {
                     console.log('Error en auth github');
-                    console.log(e);
+                    console.log({e});
                     return done(e);
                 }
             }
@@ -163,8 +164,8 @@ export function iniPassport() {
     //-------------------------------FACEBOOK ----------------------------
 
     passport.use(new FacebookStrategy({
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        clientID: config.FACEBOOK_CLIENT_ID,
+        clientSecret: config.FACEBOOK_CLIENT_SECRET,
         callbackURL: 'http://127.0.0.1:8081/auth/facebook/callback',
         profileFields: ["id", "displayName", "email"],
     },
@@ -210,8 +211,8 @@ export function iniPassport() {
     /* passport.use(
         new GoogleStrategy(
             {
-                clientID: process.env.GOOGLE_CLIENT_ID,
-                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                clientID: config.GOOGLE_CLIENT_ID,
+                clientSecret: config.GOOGLE_CLIENT_SECRET,
                 callbackURL: "http://localhost:8080/auth/google/callback",
             },
             async (accessToken, refreshToken, profile, done) => {
