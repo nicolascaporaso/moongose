@@ -1,0 +1,50 @@
+<h1>Perfil</h1>
+<br />
+<br />
+<br />
+<div id="perfil">
+    IdUsuario:
+    {{user.user}}
+    <br />
+    <p>mi carrito es: </p> <p id="datos"></p>
+    <a href='/auth/administracion'>Ver datos super secretos<a>
+
+            <br />
+            <a href='/auth/logout'>Salir!</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // Verificar si existe un ID de carrito en el Local Storage
+        const cartId = localStorage.getItem('cartId');
+        var datosId = document.getElementById('datos');
+
+        if (!cartId) {
+            // No se encontró un ID de carrito, crear uno nuevo
+            alert("no existe carro");
+            createCart();
+        } else {
+            // Se encontró un ID de carrito.
+            datosId.textContent = cartId;
+
+        }
+    });
+
+    async function createCart() {
+        try {
+            const response = await fetch('/api/carts', { method: 'post' });
+            if (response.ok) {
+                const data = await response.json();
+                const cartId = data.id;
+                alert(cartId)
+                localStorage.setItem('cartId', cartId);
+            } else {
+                console.error('Error en la solicitud:', response.status);
+                // Manejar el error adecuadamente
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Manejar el error adecuadamente
+        }
+    }
+</script>

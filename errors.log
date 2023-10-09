@@ -2178,27 +2178,79 @@ info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: development 
 info: servidor iniciado en modo: development 
@@ -2218,538 +2270,51 @@ info: servidor iniciado en modo: development
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: development 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: production 
+info: servidor iniciado en modo: production 
+info: Server listen port http://localhost:8081/
+info: Server listen port http://localhost:8081/
 debug: prueba de Debug message
 debug: prueba de Debug message
 http: prueba de HTTP message
 info: prueba de Info message
-warn: prueba de Warning message
 http: prueba de HTTP message
-info: prueba de Info message
 warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-http: prueba de HTTP message
-info: prueba de Info message
-info: prueba de Info message
-warn: prueba de Warning message
-warn: prueba de Warning message
-error: prueba de Error message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-http: prueba de HTTP message
 info: prueba de Info message
 warn: prueba de Warning message
 error: prueba de Error message
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-http: prueba de HTTP message
-info: prueba de Info message
-info: prueba de Info message
-warn: prueba de Warning message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
+info: servidor iniciado en modo: test 
+info: servidor iniciado en modo: test 
+info: servidor iniciado en modo: test 
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: servidor iniciado en modo: development 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-http: prueba de HTTP message
-http: prueba de HTTP message
-info: prueba de Info message
-info: prueba de Info message
-warn: prueba de Warning message
-warn: prueba de Warning message
-error: prueba de Error message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-warn: prueba de Warning message
-error: prueba de Error message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-debug: prueba de Debug message
-debug: prueba de Debug message
-debug: prueba de Debug message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-http: prueba de HTTP message
-info: prueba de Info message
-warn: prueba de Warning message
-error: prueba de Error message
-fatal: prueba de Fatal message
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
-info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
@@ -2766,13 +2331,11 @@ info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
 info: servidor iniciado en modo: production 
 info: servidor iniciado en modo: production 
-info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
 info: Server listen port http://localhost:8081/
+info: servidor iniciado en modo: test 
+info: servidor iniciado en modo: test 
+info: servidor iniciado en modo: test 
 info: Server listen port http://localhost:8081/
-info: servidor iniciado en modo: production 
-info: servidor iniciado en modo: production 
 info: Server listen port http://localhost:8081/
 info: Server listen port http://localhost:8081/

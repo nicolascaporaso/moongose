@@ -89,7 +89,7 @@ describe('Pruebas para la ruta api/carts/', () => {
         expect(loginResponse.status).to.equal(302);
 
 
-        const cartId = '6507178f5d889446eb8a255e';
+        const cartId = '65245be482188b93d4a06c8c';
         const productId = '64f5223dada87c1b451a52d6';
         const quantityToAdd = 1;
 

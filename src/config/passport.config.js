@@ -11,7 +11,7 @@ const LocalStrategy = local.Strategy;
 
 // variables de entorno
 const GITHUB_CLIENT_ID = config.GITHUB_CLIENT_ID
-const GITHUB_CLIENT_SECRET = config.FACEBOOK_CLIENT_SECRET
+const GITHUB_CLIENT_SECRET = config.GITHUB_CLIENT_SECRET;
 
 export function iniPassport() {
 
@@ -90,7 +90,7 @@ export function iniPassport() {
                     };
 
                     let userCreated = await UserModel.create(newUser);
-                    console.log({userCreated});
+                    console.log(userCreated);
                     console.log('User Registration succesful');
 
 
@@ -112,7 +112,7 @@ export function iniPassport() {
                 callbackURL: 'http://127.0.0.1:8081/auth/github/callback',
             },
             async (accesToken, _, profile, done) => {
-                console.log({profile});
+                console.log(profile);
                 try {
                     const res = await fetch('https://api.github.com/user/emails', {
                         headers: {
@@ -154,7 +154,7 @@ export function iniPassport() {
 
                 } catch (e) {
                     console.log('Error en auth github');
-                    console.log({e});
+                    console.log(e);
                     return done(e);
                 }
             }

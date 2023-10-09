@@ -2,7 +2,6 @@
 import flash from "connect-flash";
 import MongoStore from 'connect-mongo';
 import crypto from 'crypto';
-import "dotenv/config";
 import express from 'express';
 import handlebars from 'express-handlebars';
 import session from 'express-session';
@@ -10,26 +9,29 @@ import passport from 'passport';
 import path from "path";
 import { iniPassport } from './config/passport.config.js';
 import { apiRouter } from "./routes/api.routes.js";
+import {loggerRouter} from "./routes/logger.routes.js";
 import { authRouter } from './routes/auth.router.js';
 import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
-import {loggerRouter} from "./routes/logger.routes.js";
 import { __dirname, connectMongo, connectSocket } from '../src/utils.js';
 import errorHandler from "../src/middlewares/error.js"
 import logger from "./config/logger.js";
+import { config } from "./config/config.js";
 
 //swagger
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
-import { config } from "./config/config.js";
+
+
+
 
 const app = express();
 const port = 8081;
 const secreto = crypto.randomBytes(64).toString('hex');
 
 const MONGO_USER = config.MONGO_USER
-const MONGO_PASS = config.MONGO_PASS
-const DB_NAME = config.DB_NAME
+const MONGO_PASS = config.MONGO_PASS;
+const DB_NAME = config.DB_NAME;
 
 const httpServer = app.listen(port, () => {
     logger.info("Server listen port " + "http://localhost:" + port + "/")
@@ -80,6 +82,9 @@ const swaggerOptions = {
 };
 const specs = swaggerJSDoc(swaggerOptions);
 app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
+
+
 
 // Routes
 app.use("/", viewRouter);

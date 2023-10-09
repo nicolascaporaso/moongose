@@ -1,4 +1,3 @@
-import { log } from "console";
 import SessionDTO from "../DAO/DTO/Session.DTO.js";
 class SessionController{
 
@@ -64,22 +63,17 @@ profile (req, res) {
 }
 
 callbackProfile (req, res) {
-    try {
-        req.session.user = req.session.user ?? {};
-        req.session.user.firstName =req.user.firstName;
-        req.session.user.lastName =req.user.lastName;
-        req.session.user.role =req.user.role;
-        req.session.user.email =req.user.email;
-        req.session.user.age =req.user.age;
-        req.session.user.cartId =req.user.cartId;
-        
+    
+    req.session.user = req.session.user ?? {};
+    req.session.user.firstName =req.user.firstName;
+    req.session.user.lastName =req.user.lastName;
+    req.session.user.role =req.user.role;
+    req.session.user.email =req.user.email;
+    req.session.user.age =req.user.age;
+    req.session.user.cartId =req.user.cartId;
+
     // Redirige al usuario a la página deseada después de iniciar sesión correctamente
     res.redirect("/auth/profile");
-    } catch (error) {
-        console.log(error);
-        res.redirect("/error")
-    }
-
 }
 
 callbackFacebook (req, res) {

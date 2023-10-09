@@ -1,5 +1,6 @@
+import { log } from "console";
+import "dotenv/config";
 import winston from "winston";
-import { env } from 'node:process';
 
 const customLevelsOptions = {
   levels: {
@@ -22,7 +23,8 @@ const customLevelsOptions = {
 
 const logFormat = winston.format.simple();
 
-if (env.NODE_ENV.trim() === 'production') {
+
+if (process.env.NODE_ENV.trim() === "production") {
   var logger = winston.createLogger({
     levels: customLevelsOptions.levels,
     transports: [
