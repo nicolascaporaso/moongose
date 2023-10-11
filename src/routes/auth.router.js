@@ -37,11 +37,5 @@ authRouter.get("/github/callback", passport.authenticate("github", { failureRedi
 authRouter.get("/facebook",passport.authorize("facebook", { scope: ["email"] }));
 
 authRouter.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), sessionController.callbackFacebook);
-//-------------------------------- Google -----------------------------------
-/*
-authRoutes.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-authRoutes.get("/google/callback",passport.authenticate("google", { failureRedirect: "/auth/fail-register" }), sessionController.googleCallback);
-*/
 
 authRouter.use("/recovery", passRecoveryRouter);

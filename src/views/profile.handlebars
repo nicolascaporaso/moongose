@@ -1,7 +1,7 @@
 <h2 class="perfil-titulo">Tu Perfil</h2>
 <nav class="barra-navegacion">
     <div class="contenedor-fluido">
-        <a class="logo-enlace" href="http://localhost:8080/products">
+        <a class="logo-enlace" href="/products">
             <img src="https://i.postimg.cc/vB4Vkc4D/ecommerce-2.gif" alt="logo" width="100px"
                 style="margin-left: 1.4rem;" />
         </a>
@@ -10,7 +10,7 @@
         </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" style="color:azure;" href="http://localhost:8080/products">
+                <li class="nav-item"><a class="nav-link" style="color:azure;" href="/products">
                         Volver al Home 🏠
                     </a></li>
             </ul>
@@ -51,19 +51,17 @@
                             <div class="fila-detalle row py-1">
                                 <div class="columna-detalle col-6 mb-3">
                                     <h6>Reciente</h6>
-                                    <a href="/cart/{{cartId}}"
-                                        class="boton-perfil btn btn-outline-primary btn-sm">Ver Carrito</a>
+                                    <a href="/cart/{{cartId}}" class="boton-perfil btn btn-outline-primary btn-sm">Ver
+                                        Carrito</a>
                                 </div>
-                                <div class="columna-detalle col-6 mb-3">
-                                    <h6>Cerrar Sesión</h6>
-                                    <a href="/auth/logout" class="boton-perfil btn btn-outline-primary btn-sm">Log
-                                        out</a>
-                                </div>
+                                <div class="fila-detalle row py-1"></div>
+                                <a href="/products/" class="boton-perfil btn btn-outline-primary btn-sm">Ver
+                                    Productos</a>
                             </div>
-                            <div class="iconos-sociales d-flex justify-content-start">
-                                <a href="#!"><i class="icono-facebook bi bi-facebook me-3"></i></a>
-                                <a href="#!"><i class="icono-twitter bi bi-twitter me-3"></i></a>
-                                <a href="#!"><i class="icono-instagram bi bi-instagram fa-lg"></i></a>
+                            <div class="columna-detalle col-6 mb-3">
+                                <h6>Cerrar Sesión</h6>
+                                <a href="/auth/logout" class="boton-perfil btn btn-outline-primary btn-sm">Log
+                                    out</a>
                             </div>
                         </div>
                     </div>
@@ -71,4 +69,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

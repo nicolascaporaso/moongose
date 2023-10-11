@@ -12,7 +12,6 @@ const MONGO_USER = config.MONGO_USER;
 const MONGO_PASS = config.MONGO_PASS;
 const DB_NAME = config.DB_NAME;
 
-
 // --------------- MULTER -----------------------
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
