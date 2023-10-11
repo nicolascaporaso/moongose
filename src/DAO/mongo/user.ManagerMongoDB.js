@@ -1,4 +1,4 @@
-import {UserModel} from './models/user.model.js'; // Asegúrate de que la ruta sea correcta
+import { UserModel } from './models/user.model.js'; // Asegúrate de que la ruta sea correcta
 
 class UserManager {
     // Método para buscar un usuario por correo electrónico
@@ -16,6 +16,15 @@ class UserManager {
         try {
             const user = await UserModel.findById(userId);
             return user;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getAllUsers() {
+        try {
+            const users = await UserModel.find().sort({ username: 1 });
+            return users;
         } catch (error) {
             throw error;
         }

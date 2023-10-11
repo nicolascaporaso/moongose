@@ -7,8 +7,7 @@ class PdctService {
 
     async validateProduct(title, description, code, price, stock) {
         if (!description || !title || !code || !price || !stock) {
-            //console.log("validation error: please complete all data.");
-            //throw new error("validation error: please complete all data.");
+            
 
             return CustomError.createError({
                 name: 'Validation Error',

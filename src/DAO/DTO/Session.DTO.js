@@ -1,5 +1,3 @@
-
-
 export default class SessionDTO {
     constructor(session) {
         this.firstName = session.user.firstName;
