@@ -7,5 +7,5 @@ export const usersRouter = Router()
 
 usersRouter.get("/", isAdmin, userController.listUsers);
 
-usersRouter.delete("/", isAdmin, userController.deleteInactiveUsers);
+usersRouter.delete("/", userController.deleteInactiveUsers);
 

@@ -1,4 +1,7 @@
 import SessionDTO from "../DAO/DTO/Session.DTO.js";
+import usersService from "../services/users.service.js";
+
+
 class SessionController{
 
 session (req, res) {
@@ -26,22 +29,24 @@ registerOk(req, res) {
         return res.json({ error: 'something went wrong' });
     }
     req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, age: req.user.age, role: req.user.role, };
-    return res.redirect("/products");
+    return res.redirect("/auth/profile");
 }
 
 login (req, res) {
     return res.render('login', {});
 }
 
-loginOk (req, res) {
+async loginOk (req, res) {
     if (!req.user) {
         return res.json({ error: 'invalid credentials' });
     }
     req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, role: req.user.role, age: req.user.age, cartId: req.user.cartId };
-    return res.redirect("/products");
+    await usersService.saveLoginTime(req.user._id);
+    return res.redirect("/auth/profile");
 }
 
-logout (req, res) {
+async logout (req, res) {
+    await usersService.saveLoginTime(req.user._id);
     req.session.destroy((err) => {
         if (err) {
             return res.status(500).render('error', { error: 'no se pudo cerrar su session' });
@@ -52,7 +57,6 @@ logout (req, res) {
 
 profile (req, res) {
     const dataFormated = new SessionDTO(req.session);
-    //const role = req.session.user.role === "admin" ? "Administrador" : "Usuario Estándar";
     return res.render("profile", {
         firstname: dataFormated.firstName,
         lastname: dataFormated.lastName,
@@ -62,7 +66,8 @@ profile (req, res) {
     });
 }
 
-callbackProfile (req, res) {
+async callbackProfile (req, res) {
+    await usersService.saveLoginTime(req.user._id);
     
     req.session.user = req.session.user ?? {};
     req.session.user.firstName =req.user.firstName;
@@ -81,14 +86,6 @@ callbackFacebook (req, res) {
     res.redirect('/');
 }
 
-googleCallback (req, res) {
-    req.session.email = req.user.email;
-    req.session.role = req.user.role;
-    req.session.first_name = req.user.first_name;
-    req.session.last_name = req.user.last_name;
-    req.session.age = req.user.age;
-    req.session.cartID = req.user.cartID;
-    return res.redirect("/products");
-    }
+
 }
 export const sessionController = new SessionController();

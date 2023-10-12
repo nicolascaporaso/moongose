@@ -19,21 +19,33 @@ class UserService {
         }
     }
 
-    /*
+    
     async deleteInactiveUsers() {
         try {
-            // Supongamos que tienes un campo 'lastLogin' en el modelo User
-            const twentyFourHoursAgo = new Date();
-            twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
-
-            // Eliminar usuarios que no se han conectado en las últimas 24 horas
-            const result = await User.deleteMany({ lastLogin: { $lt: twentyFourHoursAgo } });
+            const twoDaysAgo = new Date();
+            twoDaysAgo.setHours(twoDaysAgo.getHours() - 48);
+            const result = await userManagerMongoDB.deleteMany(twoDaysAgo);
             return result;
         } catch (error) {
             console.error(error);
             throw new Error("Error al eliminar usuarios inactivos");
         }
-    }*/
+    }
+
+    async saveLoginTime(userId) {
+        try {
+            const user = await userManagerMongoDB.getUserById(userId);
+            if (user) {
+                user.lastLogin = new Date();
+                await userManagerMongoDB.updateUser(userId, user); 
+            } else {
+                throw new Error('Usuario no encontrado');
+            }
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error al guardar la fecha de inicio de sesión');
+        }
+    }
 }
 
 export default new UserService();

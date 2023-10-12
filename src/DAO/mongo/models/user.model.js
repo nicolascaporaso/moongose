@@ -1,4 +1,3 @@
-//@ts-check
 import { Schema, model } from 'mongoose';
 
 const schema = new Schema({
@@ -18,30 +17,29 @@ const schema = new Schema({
         max: 100,
         unique: true,
     },
-
     password: {
         type: String,
         required: true,
         max: 100,
     },
-
     age: {
-        type: Number, 
-        required: false 
+        type: Number,
+        required: false,
     },
-
-    cartId: { 
-        type: String, 
-        required: false },
-
+    cartId: {
+        type: String,
+        required: false,
+    },
     role: {
         type: String,
         required: true,
-        default: "user"
+        default: "user",
     },
-},
-    { versionKey: false }
-);
-
+    lastLogin: {
+        type: Date, 
+        default: Date.now,
+        required: false,
+    },
+}, { versionKey: false });
 
 export const UserModel = model('users', schema);

@@ -20,7 +20,7 @@ let cookieValue
 
 
 describe('REGISTER / LOGIN / SESSION   Pruebas para la autenticación ', () => {
-    it('Debería registrar al usuario y redireccionar a /products', (done) => {
+    it('Debería registrar al usuario y redireccionar a /auth/profile', (done) => {
         requester
             .post('/auth/register')
             .send(mockUser)
@@ -28,7 +28,7 @@ describe('REGISTER / LOGIN / SESSION   Pruebas para la autenticación ', () => {
             .end((err, res) => {
                 if (err) return done(err);
 
-                expect(res.header.location).to.equal('/products');
+                expect(res.header.location).to.equal('/auth/profile');
                 done();
             });
     });

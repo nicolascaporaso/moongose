@@ -1,7 +1,7 @@
 import { UserModel } from './models/user.model.js'; // Asegúrate de que la ruta sea correcta
 
 class UserManager {
-    // Método para buscar un usuario por correo electrónico
+
     async findOneByEmail(emailString) {
         const email = emailString.email
         try {
@@ -29,7 +29,27 @@ class UserManager {
             throw error;
         }
     }
+
+    async updateUser(user, newData) {
+        try {
+            await UserModel.findByIdAndUpdate(user, newData);
+            return user;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+async deleteMany(twoDaysAgo) {
+    try {
+        const result = await UserModel.deleteMany({ lastLogin: { $lt: twoDaysAgo } });
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error al eliminar usuarios');
+    }
 }
+}
+
 
 export default new UserManager();
 
