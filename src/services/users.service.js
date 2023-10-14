@@ -46,6 +46,28 @@ class UserService {
             throw new Error('Error al guardar la fecha de inicio de sesión');
         }
     }
+
+
+    deleteUser = async (id) => {
+        try {
+            console.log(id);
+            const deletedUsers = await userManagerMongoDB.deleteUser(id);
+            if (deletedUsers !== null) {
+                return deletedUsers 
+            }else{
+                throw new Error("Usuario no encontrado");
+            }
+
+        } catch (error) {
+            console.log(error);
+            return error.message;
+        }
+    
 }
+
+}
+
+
+
 
 export default new UserService();

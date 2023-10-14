@@ -4,7 +4,7 @@ class UserController {
     async deleteInactiveUsers(req, res) {
         try {
             const result = await UserService.deleteInactiveUsers();
-            return res.status(204).json({message: 'Operación exitosa', result: result});
+            return res.status(204).json({ message: 'Operación exitosa', result: result });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Error general al eliminar usuarios inactivos' });
@@ -20,6 +20,18 @@ class UserController {
             res.status(500).json({ message: 'Error general al listar usuarios' });
         }
     }
+
+
+async deleteUser(req, res) {
+    try {
+        const data = await UserService.deleteUser(req.params.ID);
+        
+        return res.status(201).json({ message: "user removed from system", data });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+        console.log(error);
+    }
+};
 }
 
 export const userController = new UserController();

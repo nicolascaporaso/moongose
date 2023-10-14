@@ -48,6 +48,17 @@ async deleteMany(twoDaysAgo) {
         throw new Error('Error al eliminar usuarios');
     }
 }
+
+async deleteUser(id) {
+    try {
+        const result = await UserModel.findByIdAndRemove(id);
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error al eliminar usuario');
+    }
+}
+
 }
 
 
