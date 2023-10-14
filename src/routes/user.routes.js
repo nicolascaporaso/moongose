@@ -10,3 +10,5 @@ usersRouter.get("/", isAdmin, userController.listUsers);
 usersRouter.delete("/", isAdmin, userController.deleteInactiveUsers);
 
 usersRouter.delete("/delete/:ID", isAdmin, userController.deleteUser);
+
+usersRouter.put("/role/:ID", userController.changeRole);

@@ -39,25 +39,36 @@ class UserManager {
         }
     }
 
-async deleteMany(twoDaysAgo) {
-    try {
-        const result = await UserModel.deleteMany({ lastLogin: { $lt: twoDaysAgo } });
-        return result;
-    } catch (error) {
-        console.error(error);
-        throw new Error('Error al eliminar usuarios');
+    async deleteMany(twoDaysAgo) {
+        try {
+            const result = await UserModel.deleteMany({ lastLogin: { $lt: twoDaysAgo } });
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error al eliminar usuarios');
+        }
     }
-}
 
-async deleteUser(_id) {
-    try {
-        const result = await UserModel.findByIdAndRemove(_id);
-        return result;
-    } catch (error) {
-        console.error(error);
-        throw new Error('Error al eliminar usuario');
+    async deleteUser(_id) {
+        try {
+            const result = await UserModel.findByIdAndRemove(_id);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error al eliminar usuario');
+        }
     }
-}
+
+    async updateRole(userId, newRole) {
+        try {
+            const updatedUser = await UserModel.findByIdAndUpdate(userId, { role: newRole }, { new: true });
+            return updatedUser;
+            
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
 
 }
 

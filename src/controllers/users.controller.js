@@ -32,6 +32,19 @@ async deleteUser(req, res) {
         console.log(error);
     }
 };
+
+async changeRole(req, res) {
+    try {
+        const userId = req.params.ID;
+        const newRole = req.query.newRole;
+        const data = await UserService.changeRole(userId, newRole);
+        return res.status(201).json({ message: "role changed", data });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Ha ocurrido un error al actualizar el rol del usuario.' });
+    }
+};
+
 }
 
 export const userController = new UserController();
