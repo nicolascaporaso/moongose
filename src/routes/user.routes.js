@@ -9,4 +9,4 @@ usersRouter.get("/", isAdmin, userController.listUsers);
 
 usersRouter.delete("/", isAdmin, userController.deleteInactiveUsers);
 
-usersRouter.delete("/delete/:ID", userController.deleteUser);
+usersRouter.delete("/delete/:ID", isAdmin, userController.deleteUser);

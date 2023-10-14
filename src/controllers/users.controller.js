@@ -1,3 +1,4 @@
+import { log } from 'console';
 import UserService from '../services/users.service.js';
 
 class UserController {
@@ -25,7 +26,6 @@ class UserController {
 async deleteUser(req, res) {
     try {
         const data = await UserService.deleteUser(req.params.ID);
-        
         return res.status(201).json({ message: "user removed from system", data });
     } catch (error) {
         res.status(500).json({ message: error.message });

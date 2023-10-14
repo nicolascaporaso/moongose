@@ -49,9 +49,9 @@ async deleteMany(twoDaysAgo) {
     }
 }
 
-async deleteUser(id) {
+async deleteUser(_id) {
     try {
-        const result = await UserModel.findByIdAndRemove(id);
+        const result = await UserModel.findByIdAndRemove(_id);
         return result;
     } catch (error) {
         console.error(error);

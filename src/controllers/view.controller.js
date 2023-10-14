@@ -1,5 +1,6 @@
 import { ProductService } from "../services/product.service.js";
 import { CartService } from "../services/cart.service.js";
+import UserService from '../services/users.service.js';
 import logger from "../config/logger.js";
 
 
@@ -66,6 +67,24 @@ class ViewsController {
         }
     }
     
+    async getAllUsers(req, res) {
+        try {
+            const users = await UserService.getAllUsers();
+            let payload = users.map((user) => {
+                return {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, role: user.role}
+            });
+            return res.status(200).render("users", { status: "success", users: payload });
+        } catch (e) {
+            console.error(e);
+            return res.status(500).json({
+                status: "error",
+                message: "Something went wrong :(",
+                data: e,
+            });
+        }
+    }
 }
+
+
 
 export const viewsController = new ViewsController();

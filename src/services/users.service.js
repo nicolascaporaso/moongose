@@ -50,7 +50,6 @@ class UserService {
 
     deleteUser = async (id) => {
         try {
-            console.log(id);
             const deletedUsers = await userManagerMongoDB.deleteUser(id);
             if (deletedUsers !== null) {
                 return deletedUsers 

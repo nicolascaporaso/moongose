@@ -15,3 +15,4 @@ viewRouter.get("/cart/:cid", isUser, viewsController.getCartById);
 
 viewRouter.get("/mockingproducts", mockingController.get);
 
+viewRouter.get("/users", isAdmin, viewsController.getAllUsers);

@@ -1,0 +1,35 @@
+<div>
+    <h1>Lista de Usuarios</h1>
+    <ul>
+        {{#each users}}
+        <li>
+            {{firstName}} {{lastName}} {{email}} {{role}}
+            <button id="{{id}}" class="delete-button">Borrar</button>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+<script>
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("delete-button")) {
+            const userId = event.target.getAttribute("id");
+
+            // Realizar la solicitud de eliminación
+            fetch(`/api/users/delete/${userId}`, {
+                method: "DELETE"
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Usuario eliminado con éxito, puedes actualizar la lista de usuarios si es necesario.
+                        event.target.closest(".user").remove(); // Elimina el elemento de la lista.
+                    } else {
+                        console.error("Error al eliminar el usuario.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error de red:", error);
+                });
+        }
+    });
+</script>
