@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { isAdmin, isUser, isUserCartOwner } from '../middlewares/auth.js';
+import { isAdmin, isUser, isUserCartOwner, isLoggedin  } from '../middlewares/auth.js';
 import {cartsController} from '../controllers/carts.controller.js';
 import { ticketController } from "../controllers/ticket.controller.js";
 
@@ -13,13 +13,13 @@ cartRouter.get("/:cid/purchase", ticketController.purchase);
 
 cartRouter.get("/", cartsController.getCarts);
 
-cartRouter.put("/:cid",isUser ,cartsController.updateCart);
+cartRouter.put("/:cid", cartsController.updateCart);
 
-cartRouter.put("/:cid/product/:pid",isUser, isUserCartOwner, cartsController.addProductToCart);
+cartRouter.put("/:cid/product/:pid", cartsController.addProductToCart);
 
-cartRouter.delete("/:cid/product/:pid",isUser, cartsController.removeProductFromCart);
+cartRouter.delete("/:cid/product/:pid", cartsController.removeProductFromCart);
 
-cartRouter.delete("/:cid",isUser, cartsController.deleteCart);
+cartRouter.delete("/:cid", cartsController.deleteCart);
 
 // Ruta para obtener el ID del carrito de la sesión activa
-cartRouter.get("/cartid/id", isUser, cartsController.getCartActiveSession);
+cartRouter.get("/cartid/id",  cartsController.getCartActiveSession);

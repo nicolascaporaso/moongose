@@ -4,32 +4,102 @@
         {{#each users}}
         <li>
             {{firstName}} {{lastName}} {{email}} {{role}}
+            <select id="editRole{{id}}" class="role-select" style="display: none;">
+                <option value="user">user</option>
+                <option value="admin">Admin</option>
+                <option value="premium">Premium</option>
+            </select>
             <button id="{{id}}" class="delete-button">Borrar</button>
+            <button id="btn{{id}}" class="roles">roles</button>
         </li>
         {{/each}}
     </ul>
 </div>
 
+<div><button id="deleteInactiveUsersButton">Eliminar Usuarios Inactivos</button></div>
+
 <script>
+// script para boton de borrar usuarios inactivos
+document.getElementById("deleteInactiveUsersButton").addEventListener("click", function() {
+            fetch('/api/users', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Usuarios inactivos eliminados con éxito.');
+                } else {
+                    console.error('Error al eliminar usuarios inactivos.');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+            });
+        });
+
+
+// script para manejo de roles, mediante boton y lista desplegable
+document.addEventListener('DOMContentLoaded', function() {
+    const roleButtons = document.querySelectorAll('.roles');
+    roleButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const userId = button.id.replace('btn', '');
+            const contentContainer = document.getElementById('editRole' + userId);
+            contentContainer.style.display = contentContainer.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+    const roleSelects = document.querySelectorAll('.role-select');
+
+    roleSelects.forEach((select) => {
+        select.addEventListener('change', () => {
+            const userId = select.id.replace('editRole', '');
+            const newRole = select.value;
+
+            // Envía una solicitud Fetch para actualizar el rol
+            fetch(`http://127.0.0.1:8081/api/users/role/${userId}?newRole=${newRole}`, {
+                method: 'PUT', 
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Rol de usuario ${userId} actualizado a ${newRole}`);
+                    const contentContainer = document.getElementById('editRole' + userId);
+                    contentContainer.style.display = 'none';
+                } else {
+                    console.error(`Error al actualizar el rol del usuario ${userId}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error de red:', error);
+            });
+        });
+    });
+});
+
+// script para borrar usuarios
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("delete-button")) {
             const userId = event.target.getAttribute("id");
 
-            // Realizar la solicitud de eliminación
             fetch(`/api/users/delete/${userId}`, {
                 method: "DELETE"
             })
-                .then(response => {
-                    if (response.ok) {
-                        // Usuario eliminado con éxito, puedes actualizar la lista de usuarios si es necesario.
-                        event.target.closest(".user").remove(); // Elimina el elemento de la lista.
-                    } else {
-                        console.error("Error al eliminar el usuario.");
+            .then(response => {
+                if (response.ok) {
+                    const listItem = event.target.closest("li");
+                    if (listItem) {
+                        listItem.remove();
                     }
-                })
-                .catch(error => {
-                    console.error("Error de red:", error);
-                });
+                } else {
+                    console.error("Error al eliminar el usuario.");
+                }
+            })
+            .catch(error => {
+                console.error("Error de red:", error);
+            });
         }
     });
+
+
 </script>

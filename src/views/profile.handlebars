@@ -58,11 +58,13 @@
                                 <a href="/products/" class="boton-perfil btn btn-outline-primary btn-sm">Ver
                                     Productos</a>
                             </div>
+                            <div>
+                                <a href="/users/" class="boton-perfil"><button id="users" style="display: none">ADMIN USERS</button></div></a>
                             <div class="columna-detalle col-6 mb-3">
                                 <h6>Cerrar Sesión</h6>
-                                <a href="/auth/logout" class="boton-perfil btn btn-outline-primary btn-sm">Log
-                                    out</a>
+                                <a href="/auth/logout" class="boton-perfil btn btn-outline-primary btn-sm">Logout</a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -71,3 +73,14 @@
     </div>
 </div>
 </div>
+
+<script>
+        window.addEventListener('load', function() {
+            const adminElement = document.querySelector('.admin');
+            const adminValue = adminElement.textContent.trim();
+            if (adminValue === 'admin') {
+                const miBoton = document.getElementById('users');
+                miBoton.style.display = 'block';
+            }
+        });
+    </script>
