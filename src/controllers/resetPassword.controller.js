@@ -1,7 +1,7 @@
 import UserManager from '../DAO/mongo/user.ManagerMongoDB.js'; // Importa tu modelo de usuario
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import { createHash } from '../utils.js';
+import { createHash } from '../utils/bcrypt.js';
 
 const User= UserManager;
 

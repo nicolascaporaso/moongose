@@ -4,7 +4,7 @@ import GitHubStrategy from 'passport-github2';
 import local from 'passport-local';
 import { UserModel } from '../DAO/mongo/models/user.model.js';
 import { CartService } from '../services/cart.service.js';
-import { createHash, isValidPassword } from '../utils.js';
+import { createHash, isValidPassword } from '../utils/bcrypt.js';
 import { config } from './config.js';
 
 const LocalStrategy = local.Strategy;

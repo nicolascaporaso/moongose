@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { uploader } from "../utils.js";
+import { uploader } from "../utils/multer.js";
 import {productsController} from "../controllers/products.controller.js";
 import { isAdmin, isLoggedin } from "../middlewares/auth.js";
 

@@ -13,16 +13,14 @@ import {loggerRouter} from "./routes/logger.routes.js";
 import { authRouter } from './routes/auth.router.js';
 import { ChatRouter } from './routes/chat.router.js';
 import { viewRouter } from "./routes/view.Routes.js";
-import { __dirname, connectMongo, connectSocket } from '../src/utils.js';
+import { __dirname, } from '../src/rootPath.js';
 import errorHandler from "../src/middlewares/error.js"
 import logger from "./config/logger.js";
 import { config } from "./config/config.js";
-
-//swagger
+import connectMongo from "./utils/mongo.js"
+import connectSocket from "./utils/socket.js"
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
-
-
 
 
 const app = express();
