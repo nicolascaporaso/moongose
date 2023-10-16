@@ -63,15 +63,24 @@ class UserManager {
         try {
             const updatedUser = await UserModel.findByIdAndUpdate(userId, { role: newRole }, { new: true });
             return updatedUser;
-            
+
         } catch (error) {
             console.error(error);
             throw error;
         }
     }
 
-}
+async findDelete(twoDaysAgo) {
+    try {
+        const oldUsers = await UserModel.find({lastLogin: { $lte: twoDaysAgo },}).exec();
+        return oldUsers;
 
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+}
 
 export default new UserManager();
 
