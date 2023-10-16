@@ -1,0 +1,107 @@
+info:
+  title: API de Usuarios
+  version: 1.0.0
+paths:
+  /api/users:
+    get:
+      summary: Obtiene la lista de usuarios
+      tags:
+        - users
+      responses:
+        '200':
+          description: Usuarios obtenidos satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+
+  /api/users/delete:
+    delete:
+      summary: Elimina usuarios inactivos
+      tags:
+        - users
+      responses:
+        '204':
+          description: Usuarios inactivos eliminados exitosamente
+
+  /api/users/delete/{ID}:
+    delete:
+      summary: Elimina un usuario por ID
+      tags:
+        - users
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          description: ID del usuario a eliminar
+      responses:
+        '201':
+          description: Usuario eliminado exitosamente
+
+  /api/users/role/{ID}:
+    put:
+      summary: Actualiza el rol de un usuario por ID
+      tags:
+        - users
+      parameters:
+        - name: ID
+          in: path
+          required: true
+          description: ID del usuario a actualizar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newRole:
+                  type: string
+                  description: Nuevo rol del usuario
+              required:
+                - newRole
+      responses:
+        '201':
+          description: Rol de usuario actualizado exitosamente
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Nombre del usuario
+          maxLength: 100
+        lastName:
+          type: string
+          description: Apellido del usuario
+          maxLength: 100
+        email:
+          type: string
+          description: Correo electrónico del usuario
+          maxLength: 100
+        password:
+          type: string
+          description: Contraseña del usuario
+          maxLength: 100
+        age:
+          type: number
+          description: Edad del usuario
+        cartId:
+          type: string
+          description: ID del carrito del usuario
+        role:
+          type: string
+          description: Rol del usuario
+          default: user
+        lastLogin:
+          type: string
+          description: Último inicio de sesión del usuario
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+        - role

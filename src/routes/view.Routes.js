@@ -7,12 +7,12 @@ import { mockingController } from "../controllers/mocking.controller.js";
 export const viewRouter = Router()
 
 
-viewRouter.get("/realtimeproducts",isUser, viewsController.viewRealTime);
+viewRouter.get("/realtimeproducts",isLoggedin, viewsController.viewRealTime);
 
 viewRouter.get("/products", isLoggedin, viewsController.getAllProducts);
 
-viewRouter.get("/cart/:cid", viewsController.getCartById);
+viewRouter.get("/cart/:cid", isLoggedin, viewsController.getCartById);
 
-viewRouter.get("/mockingproducts", mockingController.get);
+viewRouter.get("/mockingproducts",isAdmin, mockingController.get);
 
 viewRouter.get("/users", isAdmin, viewsController.getAllUsers);
