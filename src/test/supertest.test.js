@@ -1,7 +1,7 @@
 import chai from 'chai';
 import supertest from 'supertest';
 import { faker } from '@faker-js/faker';
-import { log } from 'console';
+
 
 
 const expect = chai.expect;
@@ -78,8 +78,8 @@ describe('Pruebas para la ruta api/carts/', () => {
 
     it('Debería agregar un producto al carrito y devolver un mensaje si el usuario está autenticado y autorizado', async () => {
         const userCredentials = {
-            email: "Isabel.Gottlieb@gmail.com",
-            password: "123",
+            email: "nicolascapo@gmail.com",
+            password: "1234",
         };
 
         const loginResponse = await requester
@@ -117,8 +117,8 @@ describe('Pruebas para la ruta api/products/', () => {
     it('Debería crear un nuevo producto cuando el usuario está autenticado y autorizado', async () => {
 
         const userCredentials = {
-            email: "Isabel.Gottlieb@gmail.com",
-            password: "123",
+            email: "nicolascapo@gmail.com", //usuario admin
+            password: "1234",
         };
 
         const loginResponse = await requester
@@ -159,4 +159,27 @@ describe('Pruebas para la ruta api/products/', () => {
         expect(createdProduct).to.have.property('code', productData.code);
 
     });
+
+    it('Debería eliminar un producto cuando el usuario está autenticado y autorizado', async () => {
+        
+        const productId = '652cbad2d3bbd2e963a8781e'; // Reemplaza con el ID del producto a eliminar
+        const userCredentials = {
+            email: "nicolascapo@gmail.com", // usuario admin
+            password: "1234",
+        };
+
+        const loginResponse = await requester
+            .post('/auth/login')
+            .send(userCredentials);
+
+        expect(loginResponse.status).to.equal(302);
+
+        const response = await requester
+            .delete(`/api/products/${productId}`)
+            .set('Cookie', loginResponse.headers['set-cookie'])
+
+            expect(response.status).to.equal(200);
+    });
+
+
 });

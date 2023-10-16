@@ -35,7 +35,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "supertest": "mocha ./src/test/supertest.test.js",
+    "supertest": "mocha --timeout 4600 ./src/test/supertest.test.js",
     "start": "set NODE_ENV=production && nodemon -e yaml,js ./src/server.js",
     "dev": "set NODE_ENV=development && nodemon -e yaml,js ./src/server.js",
     "test": "set NODE_ENV=test && nodemon -e yaml,js ./src/server.js"

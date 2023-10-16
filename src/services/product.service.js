@@ -1,9 +1,26 @@
+
 import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
 import CustomError from '../errors/customError.js';
 import customErrorMsg from '../errors/customErrorMsg.js';
 import EErros from '../errors/enums.js';
+import { sendEmailsToDeletedProducts } from '../utils/sendMail.js';
+
 
 class PdctService {
+
+
+    async isValidEmail(email){
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+        
+            if( emailRegex.test(email) ){
+                console.log("mail ok");
+                return true;
+            }else{
+                console.log("mail falso");
+                return false;
+            }
+    } 
+    
 
     async validateProduct(title, description, code, price, stock) {
         if (!description || !title || !code || !price || !stock) {
@@ -91,32 +108,35 @@ class PdctService {
     }
 
     async deleteOne(id, data) {
-        const { role, ownerId } = data;
-    
+        const { role, email } = data;
         try {
-            // Obtener el producto que se va a eliminar utilizando la función getOne
             const productToDelete = await this.getOne(id);
-            
+            // si el usuario es admin puede borrar cualquier producto, pero avisa por mail.
             if (role === 'admin') {
-                // Si el usuario es un administrador, puede borrar cualquier producto
                 const deleted = await ProductManager.deleteOne({ _id: id });
+                if (this.isValidEmail(productToDelete.owner)) {
+                    // llama funcion para mandar email
+                    await sendEmailsToDeletedProducts(productToDelete.owner,id);
+                } else {
+                    if (!productToDelete.owner === "admin") {
+                        throw new Error("email invalido, no se puede enviar correo");
+                    }
+                }
                 return deleted;
             } else if (role === 'premium') {
                 // Si el usuario es premium, verifica si el producto le pertenece antes de borrarlo
-                if (productToDelete.owner === ownerId) {
-                    console.log("se cumple");
+                if (productToDelete.owner === email) {
                     const deleted = await ProductManager.deleteOne({ _id: id });
                     return deleted;
                 } else {
                     // Si el producto no le pertenece, devuelve un código de estado 403 (Prohibido)
-                    throw new Error("No tienes permisos para borrar este producto.");
+                    throw new Error("No tienes permisos para borrar este producto, no te pertenece.");
                 }
             } else {
                 // Si el rol del usuario no es ni admin ni premium, devuelve un código de estado 403 (Prohibido)
                 throw new Error("No tienes permisos para borrar productos.");
             }
         } catch (error) {
-            // Manejar errores al obtener el producto
             console.error(error);
             throw new Error("Ha ocurrido un error al buscar o borrar el producto");
         }
