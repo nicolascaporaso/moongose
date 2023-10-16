@@ -43,7 +43,6 @@ class ViewsController {
     async getCartById (req, res) {
         try {
             const cart = await CartService.getById(req.params.cid);
-            console.log(cart);
             const formattedData = {
                 payload: cart.idProducts.map(item => {
                     return {

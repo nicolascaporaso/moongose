@@ -1,6 +1,7 @@
 import TicketManager from '../DAO/mongo/ticketManagerMongoDB.js';
 import CartManager from '../DAO/mongo/cartManagerMongoDB.js';
 import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
+import logger from "../config/logger.js";
 
 class TcktService {
     async createTicket(cId) {
@@ -21,7 +22,7 @@ class TcktService {
                     await ProductManager.updateOne(id, product.description, product.title, product.code, product.price, product.stock, product.status, product.thumbnails);
                     cartupdate = await CartManager.removeProductFromCart(cId,id);
                 } else {
-                    console.log(`No hay suficiente stock para el producto ${product.title}`);
+                    throw new Error(`No hay suficiente stock para el producto ${product.title}`);
                 }
             }
 

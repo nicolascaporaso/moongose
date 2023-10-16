@@ -1,20 +1,21 @@
 import dotenv from 'dotenv'
+import logger from "../config/logger.js";
 
 const enviroment = process.env.NODE_ENV ? process.env.NODE_ENV : 'production';
 
 if (enviroment.trim()==='development'){
     dotenv.config({path:'./.env.dev'});
-    console.log("se cargaron variables de desarrollo");
+    logger.info("se cargaron variables de desarrollo");
 }
 
 if (enviroment.trim()==='production'){
     dotenv.config({path:'./.env'});
-    console.log("se cargaron variables de produccion");
+    logger.info("se cargaron variables de produccion");
 }
 
 if (enviroment.trim()==='test'){
     dotenv.config({path:'./.env.test'});
-    console.log("se cargaron variables de test");
+    logger.info("se cargaron variables de test");
 }
 
 

@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
+import logger from "../config/logger.js";
 
 export async function sendEmailsToDeletedProducts(data, id) {
-    console.log(id);
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         secure: false, 
@@ -24,7 +24,7 @@ export async function sendEmailsToDeletedProducts(data, id) {
 
     try {
         await transporter.sendMail(mailOptions);
-        console.log(`Correo enviado a ${data}`);
+        logger.info(`Correo enviado a ${data}`);
         return 'producto eliminado y correo enviado a usuario premium'
     } catch (error) {
         console.error(`Error al enviar el correo a ${data}: ${error.message}`);
@@ -59,7 +59,7 @@ for (const user of deletedUsers) {
 
     try {
         await transporter.sendMail(mailOptions);
-        console.log(`Correo enviado a ${user.email}`);
+        logger.info(`Correo enviado a ${user.email}`);
     } catch (error) {
         console.error(`Error al enviar el correo a ${user.email}: ${error.message}`);
     }

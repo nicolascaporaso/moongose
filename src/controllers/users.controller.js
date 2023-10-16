@@ -4,7 +4,6 @@ class UserController {
     async deleteInactiveUsers(req, res) {
         try {
             const result = await UserService.deleteInactiveUsers();
-            console.log(result);
             return res.status(204).json({ message: 'Operación exitosa', result: result });
         } catch (error) {
             console.log(error);

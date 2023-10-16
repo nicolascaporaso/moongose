@@ -6,6 +6,7 @@ import { UserModel } from '../DAO/mongo/models/user.model.js';
 import { CartService } from '../services/cart.service.js';
 import { createHash, isValidPassword } from '../utils/bcrypt.js';
 import { config } from './config.js';
+import logger from "../config/logger.js";
 
 const LocalStrategy = local.Strategy;
 
@@ -90,13 +91,12 @@ export function iniPassport() {
                     };
 
                     let userCreated = await UserModel.create(newUser);
-                    console.log(userCreated);
-                    console.log('User Registration succesful');
+                    logger.info('User Registration succesful');
 
 
                     return done(null, userCreated);
                 } catch (error) {
-                    console.log('Error in register');
+                    logger.error('Error in register');
                     return done(new Error(error));
                 }
             }
@@ -112,7 +112,6 @@ export function iniPassport() {
                 callbackURL: 'http://127.0.0.1:8081/auth/github/callback',
             },
             async (accesToken, _, profile, done) => {
-                console.log(profile);
                 try {
                     const res = await fetch('https://api.github.com/user/emails', {
                         headers: {
@@ -144,17 +143,16 @@ export function iniPassport() {
 
                         };
                         let userCreated = await UserModel.create(newUser);
-                        console.log('User Registration succesful');
+                        logger.info('User Registration succesful');
                         return done(null, userCreated);
                     } else {
-                        console.log('User already exists');
+                        logger.info('User already exists');
                         return done(null, user);
                     }
 
 
                 } catch (e) {
-                    console.log('Error en auth github');
-                    console.log(e);
+                    logger.error('Error en auth github');
                     return done(e);
                 }
             }

@@ -39,7 +39,6 @@ export function redirectIfLoggedIn (req, res, next) {
 };
 
 export function isUserCartOwner (req, res, next) {
-    console.log(req.session.user.cartId, req.params.cid );
     if (req.session?.user?.cartId == req.params.cid) {
         return next();
     }

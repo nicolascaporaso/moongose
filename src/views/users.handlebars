@@ -29,9 +29,9 @@ document.getElementById("deleteInactiveUsersButton").addEventListener("click", f
             })
             .then(response => {
                 if (response.ok) {
-                    console.log('Usuarios inactivos eliminados con éxito.');
+                    alert('Usuarios inactivos eliminados con éxito.');
                 } else {
-                    console.error('Error al eliminar usuarios inactivos.');
+                    alert('Error al eliminar usuarios inactivos.');
                 }
             })
             .catch(error => {
@@ -63,11 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    console.log(`Rol de usuario ${userId} actualizado a ${newRole}`);
+                    alert(`Rol de usuario ${userId} actualizado a ${newRole}`);
                     const contentContainer = document.getElementById('editRole' + userId);
                     contentContainer.style.display = 'none';
                 } else {
-                    console.error(`Error al actualizar el rol del usuario ${userId}`);
+                    alert(`Error al actualizar el rol del usuario ${userId}`);
                 }
             })
             .catch(error => {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         listItem.remove();
                     }
                 } else {
-                    console.error("Error al eliminar el usuario.");
+                    alert("Error al eliminar el usuario.");
                 }
             })
             .catch(error => {

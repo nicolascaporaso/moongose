@@ -33,8 +33,7 @@
             const bodyResponse = await response.json();
             if (response.ok) {
                 const product = bodyResponse.data;
-                console.log(product);
-                //addProductToHtml(product);
+                alert("se agrego producto nuevo, refresque la pagina")
             } else {
                 const error = bodyResponse.error;
                 alert(error);

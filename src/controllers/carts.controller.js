@@ -15,7 +15,6 @@ class CartsController{
     async getById(req, res) {
         try {
             const cart = await CartService.getById(req.params.cid);
-            console.log(cart);
             res.status(200).json({
                 success: true,
                 payload: cart.idProducts

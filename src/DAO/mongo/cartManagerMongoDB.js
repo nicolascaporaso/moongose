@@ -90,7 +90,6 @@ class cartMngr {
             //const product = await ProductModel.findOne({ _id: pId });
 
             const product = await ProductManager.getOne(pId);
-            console.log(product);
             if (!product) {
                 throw new Error('product not found');
             }

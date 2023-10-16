@@ -12,10 +12,8 @@ class PdctService {
         const emailRegex = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
         
             if( emailRegex.test(email) ){
-                console.log("mail ok");
                 return true;
             }else{
-                console.log("mail falso");
                 return false;
             }
     } 
@@ -71,9 +69,7 @@ class PdctService {
     async createOne(title, description, code, price, stock, status, thumbnails, dataUser) {
         try {
             const { email, role } = dataUser;
-            console.log(role);
             let owner;
-
             // Verificar el rol del propietario
             if (role === 'premium') {
                 // Si el propietario es premium, establece el propietario como su email

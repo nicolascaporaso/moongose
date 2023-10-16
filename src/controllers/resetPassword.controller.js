@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import { createHash } from '../utils/bcrypt.js';
 
+
 const User= UserManager;
 
 class ResetPasswordController {
@@ -80,7 +81,6 @@ class ResetPasswordController {
     async resetPassword(req, res) {
         const { token } = req.params;
         const  newPassword  = req.body.confirmPassword;
-        console.log(newPassword);
 
         try {
             // Verificar y decodificar el token
@@ -101,8 +101,7 @@ class ResetPasswordController {
                 }
 
                 // Actualizar la contraseña en la base de datos
-                const newPass = createHash(newPassword)
-                console.log(newPass);
+                const newPass = createHash(newPassword);
                 user.password = newPass;
                 await user.save();
 
