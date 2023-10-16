@@ -1,0 +1,13 @@
+<div>
+<p>Codigo de Ticket: {{sale.code}}</p>
+<p>Fecha de operacion: {{sale.date}}</p>
+<p>Costo total de Operacion: ${{sale.amount}}</p>
+<p>Comprador: {{sale.purchaser}}</p>
+    <ul>
+        {{#each formattedData.payload}}
+        <li>{{this.product}} - Cantidad: {{this.quantity}}</li>
+        {{/each}}
+    </ul>
+
+    <p>Su Compra se estara enviando en breve. </p>
+</div>

@@ -1,8 +1,8 @@
 import { ProductService } from "../services/product.service.js";
 import { CartService } from "../services/cart.service.js";
 import UserService from '../services/users.service.js';
-import logger from "../config/logger.js";
-
+import TicketService from "../services/ticket.service.js";
+import SessionDTO from "../DAO/DTO/Session.DTO.js";
 
 class ViewsController {
 
@@ -82,8 +82,40 @@ class ViewsController {
             });
         }
     }
+
+    async Ticket(req, res) {
+        try {
+            const dataUser = new SessionDTO(req.session);
+            const cartId = req.params.cid
+            const purchase = await TicketService.createTicket(cartId, dataUser);
+
+            const formattedData = {
+                payload: purchase.idProducts.map(item => {
+                    return {
+                        product: item.product,
+                        quantity: item.quantity
+                    };
+                })
+            };
+
+            const  sale = {
+                code: purchase.code,
+                date: purchase.purchase_datetime,
+                amount: purchase.amount,
+                purchaser: purchase.purchaser,
+            }
+
+            return res.status(200).render("ticket", { formattedData, sale });
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({
+                status: "error",
+                msg: "something went wrong :(",
+                data: {},
+            });
+        }
+    }
+
 }
-
-
 
 export const viewsController = new ViewsController();

@@ -12,6 +12,8 @@
     {{/each}}
 </div>
 
+<div><button id="buyButton">Comprar</button></div>
+
 <script>
     function deleteCart(cid, pid) {
         fetch(`/api/carts/${cid}/product/${pid}`, {

@@ -16,3 +16,5 @@ viewRouter.get("/cart/:cid", isLoggedin, viewsController.getCartById);
 viewRouter.get("/mockingproducts",isAdmin, mockingController.get);
 
 viewRouter.get("/users", isAdmin, viewsController.getAllUsers);
+
+viewRouter.get("/ticket/:cid", viewsController.Ticket);

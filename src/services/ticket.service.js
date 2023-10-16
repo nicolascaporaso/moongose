@@ -4,7 +4,7 @@ import ProductManager from '../DAO/mongo/prouctManagerMongoDB.js';
 import logger from "../config/logger.js";
 
 class TcktService {
-    async createTicket(cId) {
+    async createTicket(cId, dataUser) {
         try {
             // Obtener el carrito por su ID (cId)
             const cart = await CartManager.getById(cId);
@@ -33,7 +33,7 @@ class TcktService {
                     code: code,
                     purchase_datetime: new Date(),
                     amount: totalCost,
-                    purchaser: 'comprador', 
+                    purchaser: dataUser.email, 
                     idProducts: ticketProducts ,
                 };
 
