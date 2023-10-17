@@ -47,7 +47,7 @@ class TcktService {
             }
 
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error("Ha ocurrido un error");
         }
     }

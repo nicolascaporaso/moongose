@@ -22,7 +22,7 @@ authRouter.get('/login', sessionController.login);
 
 authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }), sessionController.loginOk);
 
-authRouter.get('/logout', sessionController.logout);
+authRouter.get('/logout', isLoggedin , sessionController.logout);
 
 authRouter.get("/profile", isLoggedin, sessionController.profile);
 

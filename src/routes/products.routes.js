@@ -6,9 +6,9 @@ import { isAdmin, isLoggedin } from "../middlewares/auth.js";
 export const pdctRouter = Router()
 
 
-pdctRouter.get('/', productsController.getAll);
+pdctRouter.get('/', isLoggedin, productsController.getAll);
 
-pdctRouter.get("/:pid", productsController.getOne);
+pdctRouter.get("/:pid",isLoggedin, productsController.getOne);
 
 pdctRouter.post("/", uploader.single('thumbnails'), isLoggedin, productsController.createOne);
 

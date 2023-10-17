@@ -68,28 +68,45 @@
     }
   }
 
-  function deleteProduct(productId) {
-    fetch(`/api/products/${productId}`, {
-      method: 'DELETE',
-    })
-      .then(response => {
-        if (response.ok) {
-          alert("producto eliminado");
-          const element = document.getElementById(productId);
-          if (element) {
-            element.remove();
-          }
-        } else {
-          alert('Error al eliminar el producto');
-        }
+  async function deleteProduct(productId) {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción eliminará el producto",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(`/api/products/${productId}`, {
+        method: "DELETE",
       })
-      .catch(error => {
-        alert('Error de solicitud');
-      });
-  }
+        .then((response) => {
+          if (response.ok) {
+            Swal.fire("Producto eliminado", "", "success");
+            const element = document.getElementById(productId);
+            if (element) {
+              element.remove();
+            }
+          } else {
+            Swal.fire("Error al eliminar el producto", "Verifique sus permisos", "error");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          Swal.fire("Error de solicitud", "", "error");
+        });
+    }
+  });
+}
 
   function addToCart(pid) {
-    alert("agregando a cart");
+    Swal.fire({
+    title: "Agregando a carrito",
+    onBeforeOpen: () => {
+      Swal.showLoading();
+    },
+  });
     const cid = localStorage.getItem('cartId');
 
     fetch(`/api/carts/${cid}/product/${pid}`, {
@@ -103,7 +120,7 @@
     })
       .then(response => {
         if (response.ok) {
-          alert(response);
+          Swal.fire("¡Agregado al carrito satisfactoriamente!", "", "success");
         }
       })
       .catch(error => {

@@ -3,6 +3,7 @@ import CustomError from '../errors/customError.js';
 import customErrorMsg from '../errors/customErrorMsg.js';
 import EErros from '../errors/enums.js';
 import { sendEmailsToDeletedProducts } from '../utils/sendMail.js';
+import logger from "../config/logger.js";
 
 
 class PdctService {
@@ -52,7 +53,7 @@ class PdctService {
             return queryRes;
 
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 
@@ -61,7 +62,7 @@ class PdctService {
             const product = await ProductManager.getOne({ _id: id });
             return product;
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error("Ha ocurrido un error al buscar el producto");
         }
     }
@@ -97,7 +98,7 @@ class PdctService {
 
             return productCreated;
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error("Ha ocurrido un error al crear el producto");
         }
     }

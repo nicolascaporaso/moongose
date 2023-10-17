@@ -28,7 +28,6 @@ export function isLoggedin (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    return res.redirect("/products");
 };
 
 export function redirectIfLoggedIn (req, res, next) {
@@ -40,6 +39,13 @@ export function redirectIfLoggedIn (req, res, next) {
 
 export function isUserCartOwner (req, res, next) {
     if (req.session?.user?.cartId == req.params.cid) {
+        return next();
+    }
+    return res.status(403).render('error', { error: 'error de autorización!' });
+};
+
+export function isUserCartOwnerOrAdmin (req, res, next) {
+    if (req.session?.user?.cartId == req.params.cid || req.session?.user?.role === 'admin') {
         return next();
     }
     return res.status(403).render('error', { error: 'error de autorización!' });

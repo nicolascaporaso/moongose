@@ -7,7 +7,7 @@ class CartsController{
             const cart = await CartService.createCart();
             return res.status(201).json({ id: cart });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.status(500).json({ message: 'error general' })
         }
     };
@@ -20,7 +20,7 @@ class CartsController{
                 payload: cart.idProducts
             });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.status(500).json({ message: 'error GENERAL' });
         }
     };
@@ -30,7 +30,7 @@ class CartsController{
             const carts = await CartService.getCarts(req.query.limit);
             res.status(200).json(carts);
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.status(500).json({ message: 'error' })
         }
     };
@@ -45,7 +45,7 @@ class CartsController{
     
         } catch (error) {
             res.status(500).json({ message: error.message });
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -56,7 +56,7 @@ class CartsController{
         
         } catch (error) {
             res.status(500).json({ message: error.message });
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -70,7 +70,7 @@ class CartsController{
         
         } catch (error) {
             res.status(500).json({ message: error.message });
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -80,7 +80,7 @@ class CartsController{
             return res.status(201).json({ message: "all products removed from cart",  data});
         } catch (error) {
             res.status(500).json({ message: error.message });
-            console.log(error);
+            console.error(error);
         }
     };
     
@@ -91,7 +91,7 @@ class CartsController{
             return res.status(201).json({ message: "este es el carrito del usuario actual", cartId });
             
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return res.status(500).json({ message: "Error al obtener el carrito." });
         }
     };

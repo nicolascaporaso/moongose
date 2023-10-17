@@ -39,7 +39,7 @@ class cartMngr {
             if (error.message === "Cart not found") {
                 return error
             } else {
-                console.log(error);
+                console.error(error);
                 throw new Error('unknown error');
             }
         }
@@ -73,7 +73,7 @@ class cartMngr {
                     break;
                 default:
                     res.status(500).json({ message: 'error general' })
-                    console.log(error);
+                    console.error(error);
             }
         }
     }
@@ -108,7 +108,7 @@ class cartMngr {
                 return await cart.save()
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
             switch (error.message) {
                 case 'Cart not found':
                     throw new Error('Cart not found');
@@ -120,7 +120,7 @@ class cartMngr {
                     break;
                 default:
                     throw new Error('error general');
-                    console.log(error);
+                    console.error(error);
             }
         }
     }

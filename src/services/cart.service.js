@@ -18,7 +18,7 @@ class CartSrvc {
             const newCartId = await CartManager.createCart();
             return newCartId;
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error();
         }
     }
@@ -28,7 +28,7 @@ class CartSrvc {
             const cart = await CartManager.getById(cId);
             return cart
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error();
         }
     }
@@ -38,7 +38,7 @@ class CartSrvc {
             const deletedCart = await CartManager.deleteCart(cId);
             return deletedCart
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return error.message;
         }
     }
@@ -48,7 +48,7 @@ class CartSrvc {
         try {
             await CartManager.removeProductFromCart(cId, pId);
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return error.message;
         }
     }
@@ -59,7 +59,7 @@ class CartSrvc {
             const cart = await CartManager.addProductToCart(cId, pId, pQuantity);
             return cart
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return "hubo un error";
         }
     }
@@ -70,7 +70,7 @@ class CartSrvc {
             const cart = await CartManager.updateCart(cId, cartData);
             return cart
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return error.message
         }
     }

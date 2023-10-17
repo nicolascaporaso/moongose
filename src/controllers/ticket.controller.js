@@ -7,7 +7,7 @@ class TicketController{
             const ticket = await TicketService.createTicket(cId);
             return res.status(201).json(ticket);
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.status(500).json({ message: 'error general' })
         }
     };

@@ -27,7 +27,7 @@ class CartMngr {
             await fs.writeFile(this.path, cartsString);
             return id;
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error("error, reading or writting file");
         }
     }
@@ -43,7 +43,7 @@ class CartMngr {
                 throw new Error("Cart not found."); // Lanzamos un error si el carrito no se encuentra.
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error("Error retrieving cart by ID."); // Lanzamos un error si ocurre algún problema.
         }
     }
@@ -65,7 +65,7 @@ class CartMngr {
 
             return carritoEliminado; // Devolvemos el carrito eliminado
         } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error('Error general');
         }
     }
@@ -89,7 +89,7 @@ removeProductFromCart = async (cId, pId) => {
         const cartsString = JSON.stringify(carts, null, 2);
         await fs.writeFile(this.path, cartsString);
     } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error('General error');
         }
     }
@@ -122,7 +122,7 @@ addProductToCart = async (cId, pId, quantity) => {
 
         return cart; // Devolvemos el carrito actualizado con el producto agregado
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw new Error('Error general');
     }
 }
@@ -144,7 +144,7 @@ updateCart = async (cId, cartData) => {
 
         return cartToUpdate; // Devolvemos el carrito actualizado
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw new Error('Error general');
     }
 }

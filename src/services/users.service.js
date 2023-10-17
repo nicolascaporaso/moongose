@@ -62,7 +62,7 @@ deleteUser = async (id) => {
         }
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return error.message;
     }
 }
