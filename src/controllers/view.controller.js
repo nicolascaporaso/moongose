@@ -42,7 +42,10 @@ class ViewsController {
 
     async getCartById (req, res) {
         try {
-            const cart = await CartService.getById(req.params.cid);
+            const cartId = req.params.cid
+            const cart = await CartService.getById(cartId);
+            let estate= false
+
             const formattedData = {
                 payload: cart.idProducts.map(item => {
                     return {
@@ -55,7 +58,7 @@ class ViewsController {
                     };
                 })
             };
-            return res.status(200).render("cart", { formattedData });
+            return res.status(200).render("cart", { formattedData, cartId, estate: (cart.idProducts.length === 0) ? "none" : "inline" });
         } catch (e) {
             console.log(e);
             return res.status(500).json({

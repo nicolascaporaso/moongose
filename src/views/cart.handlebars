@@ -12,7 +12,7 @@
     {{/each}}
 </div>
 
-<div><button id="buyButton">Comprar</button></div>
+<div><button style="display: {{estate}};" onclick="buyCart('{{cartId}}')">COMPRAR</button></div>
 
 <script>
     function deleteCart(cid, pid) {
@@ -37,5 +37,28 @@
                 alert('Error de solicitud');
             });
     }
+
+async function buyCart(cid) {
+            const { value: userInput } = await Swal.fire({
+                title: 'Va a realizar una compra',
+                html: '<p>Cargue los numeros de su trajeta de credito.</p>',
+                input: 'text',
+                inputPlaceholder: 'Ingrese la informacion de su tarjeta de credito',
+                showCancelButton: true,
+                confirmButtonText: 'Guardar',
+                cancelButtonText: 'Cancelar',
+            });
+
+            if (userInput) {
+                // El usuario ingresó datos, haz algo con userInput
+                console.log('Datos ingresados por el usuario:', userInput);
+                Swal.fire('se enviaron sus datos a la pasarela de pago', 'aguarde por favor, puede demorar varios segundos', 'success');
+                setTimeout(function () {
+                    window.location.href = "/ticket/"+cid;
+                }, 5000);
+            } else {
+                Swal.fire('Operación de compra cancelada', '', 'info');
+            }
+        }
 
 </script>
